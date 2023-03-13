@@ -1,23 +1,18 @@
 
-# openEuler WayCa 鲲鹏 xxx
+# openEuler WayCa SIG 鲲鹏故障处理
 
-## xxx
+##  故障处理
 
-- 鲲鹏高速网络主要使用鲲鹏硬件xxx模块， 主要应用涉及xxx技术和xxx等高速网络技术。
-本文档提供了鲲鹏xx特性的基本使用和模块的特性介绍，具体内容详见如下：
+- 鲲鹏故障处理主要使用鲲鹏RAS模块，包含芯片、BIOS、BMC和OS几个组件。
+本文档提供了跟OS相关的鲲鹏RAS特性的基本使用和模块的特性介绍，具体内容详见如下：
 
-## xxx 技术文档
+##  RAS技术文档
 
-- WayCa-Kunpeng-xxx-xxx技术用户使用指南.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxx/xx文档
+- WayCa-Kunpeng-故障处理-RAS特性介绍.md
+- https://gitee.com/openeuler/WayCa
 
-- WayCa-Kunpeng-xxxx-xxx模块特性介绍.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxx/xx文档
+- WayCa-Kunpeng-故障处理-rasdaemon用户使用指南.md
+- https://gitee.com/openeuler/WayCa
 
-## Roce rdma-core 技术文档
 
-- WayCa-Kunpeng-xxxx-xxx技术用户使用指南.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxxx/xx文档
 
-- WayCa-Kunpeng-xxxx-xxx模块特性介绍.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxxx/xx文档
