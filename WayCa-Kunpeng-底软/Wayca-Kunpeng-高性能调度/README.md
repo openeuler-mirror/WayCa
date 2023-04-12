@@ -4,6 +4,11 @@
 
 本文档提供了鲲鹏高性能调度CPU特性的介绍和基本使用，具体内容详见如下：
 
+### 拓扑及调度
+
+- WayCa-Kunpeng-高性能调度-scheduler.md
+- https://gitee.com/openeuler/WayCa
+
 ### CPU特性介绍
 
 - Wayca-Kunpeng-高性能调度-CPU特性介绍.md
