@@ -191,6 +191,20 @@ b05f40fa3d26 ("PCI/AER: Add pcie_walk_rcec() to RCEC AER handling")<br/>
 e149d280e516 ("PCI/ERR: Recover from RCiEP AER errors")<br/>
 a34e781b667c ("PCI/ERR: Recover from RCEC AER errors")
 
+- 测试步骤：
+1、依赖测试工具：devmem<br/>
+在发布的openEuler版本中devmem是不支持使用的，若要使用devmem命令需要重新编译内核，将内核Config选项改为：CONFIG_STRICT_DECMEM=n。<br/>
+2、采用einj方式注错CE错误，首先要安装einj驱动，后台运行rasdaemon：<br/>
+modprobe einj<br/>
+rasdaemon -r -f&<br/>
+3、查看PCIe设备信息，计算BDF值，这里只关注DeviceID，Bus和Function等信息可以用0填充，BDF值为原来的DeviceID左移11位得到的十六进制的数，BDF值 = DeviceID << B ：<br/>
+lspci -tv<br/>
+4、执行注错操作：<br/>
+echo 0x40 > /sys/kernel/debug/apei/einj/error_type<br/>
+echo BDF值 > /sys/kernel/debug/apei/einj/param1<br/>
+echo 1 > /sys/kernel/debug/apei/einj/notrigger<br/>
+echo 1 > /sys/kernel/debug/apei/einj/error_inject<br/>
+5、查看内核打印和rasdaemon打印。<br/>
 
 ### 特性6：内存可纠正错误在线Page隔离
 
@@ -205,6 +219,15 @@ ras-page-isolation.c
 
 - 支持版本：
 openEuler 22.03 lts、 openEuler 22.03 lts sp1
+
+- 测试步骤：
+1、修改环境变量内存CE错误阈值为M次，内存CE错误时间间隔为N分钟：<br/>
+export PAGE_CE_THRESHOLD="M"<br/>
+export PAGE_CE_REFRESH_CYCLE="Nm"<br/>
+2、后台运行rasdaemon，运行后查看rasdaemon打印的阈值和时间间隔是否与配置的一致：<br/>
+rasdaemon -r -f&<br/>
+3、在时间间隔N内，对同一页内的不同内存地址注入CE错误，注错次数达到M次，内存CE错误注错请参考特性8中的案例：<br/>
+4、查看rasdaemon是否有内存隔离打印。<br/>
 
 ### 特性7：CPU核故障预测与在线隔离
 
@@ -226,7 +249,6 @@ openEuler 22.03 lts、 openEuler 22.03 lts sp1
 2、 依赖以下内核态patch<br/>
 fe3f0ee8a5f5 ("RAS: Report ARM processor information to userspace")
 
-
 ### 特性8：故障信息带内收集
 
 - 特性详解：
@@ -241,3 +263,26 @@ non-standard-hisilicon.c、non-standard-hisi_hip08.c
 
 - 支持版本：
 openEuler 22.03 lts、 openEuler 22.03 lts sp1
+
+- 测试rasdaemon收集内存CE错误步骤：
+1、内存CE错误采用einj方式注错，首先要安装einj驱动，后台运行rasdaemon：<br/>
+modprobe einj<br/>
+rasdaemon -r -f&<br/>
+2、通过numactl查看当前服务器的NUMA配置：<br/>
+numactl -H<br/>
+通过numactl将测试程序绑定到指定的CPU core(node1)<br/>
+numactl -C 32-63 mca-recover&<br/>
+查看结果，得到PID 与物理地址<br/>
+3、假设PID为23456，查看CPU core是否绑定成功<br/>
+taskset -cp 23456<br/>
+4、假设地址为0x50000000，执行注错操作：<br/>
+echo 0x8 > /sys/kernel/debug/apei/einj/error_type<br/>
+echo 0x50000000 > /sys/kernel/debug/apei/einj/param1<br/>
+echo 0xfffffffffffffff0 > /sys/kernel/debug/apei/einj/param2<br/>
+echo 1 > /sys/kernel/debug/apei/einj/notrigger<br/>
+echo 1 > /sys/kernel/debug/apei/einj/error_inject<br/>
+触发错误<br/>
+devmem 0x50000000 32 0x1<br/>
+devmem 0x50000000 32<br/>
+5、查看内核日志打印：<br/>
+dmesg
