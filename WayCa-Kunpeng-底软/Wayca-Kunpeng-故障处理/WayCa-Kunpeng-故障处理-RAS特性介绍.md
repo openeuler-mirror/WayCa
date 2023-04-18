@@ -89,9 +89,9 @@ drivers/acpi/apei/
 - 支持版本：
 openEuler 22.03 lts、 openEuler 22.03 lts sp1
 
-- 回合的关键patches：
-fe3f0ee8a5f5  - RAS: Report ARM processor information to userspace
-924ceaed70a6  - ACPI / APEI: Notify all ras err to driver
+- 回合的关键patches：<br/>
+fe3f0ee8a5f5  - RAS: Report ARM processor information to userspace<br/>
+924ceaed70a6  - ACPI / APEI: Notify all ras err to driver<br/>
 afccb6485874  - ACPI: APEI: fix synchronous external aborts in user-mode
 
 ### 特性2：IO模块故障在线恢复
@@ -103,40 +103,39 @@ afccb6485874  - ACPI: APEI: fix synchronous external aborts in user-mode
 - 源码仓库：
 https://gitee.com/openeuler/kernel/
 
-- 特性代码：
-NIC源码目录：drivers/net/ethernet/hisilicon/hns3/
-RoCE源码目录：drivers/infiniband/hw/hns/
-SAS源码目录：drivers/scsi/hisi_sas/
+- 特性代码：<br/>
+NIC源码目录：drivers/net/ethernet/hisilicon/hns3/<br/>
+RoCE源码目录：drivers/infiniband/hw/hns/<br/>
+SAS源码目录：drivers/scsi/hisi_sas/<br/>
 ZIP/SEC/HPRE源码目录：drivers/crypto/hisilicon/
 
 - 支持版本：
 openEuler 22.03 lts、 openEuler 22.03 lts sp1
 
-- 回合的关键patch：
-
-NIC patches：
-842e0c3281e2 ("net: hns3: add error recovery module and type for himac")
-579ffa72fbd1 ("net: hns3: add new ras error type for roce")
-f5804f8184d2 ("net: hns3: Add configuration of TM QCN error event")
-9e328d92bf28 ("net: hns3: add error handling compatibility during initialization")
-9c28a3a6cf4e ("net: hns3: update error recovery module and type")
-67abcd0c541f ("net: hns3: add support for imp-handle ras capability")
-ce9918424850 ("net: hns3: add the RAS compatibility adaptation solution")
-0a824254b900 ("net: hns3: add support for handling all errors through MSI-X")
-b81168e14576 ("net: hns3: add scheduling logic for error handling task")
+- 回合的关键patch：<br/>
+NIC patches：<br/>
+842e0c3281e2 ("net: hns3: add error recovery module and type for himac")<br/>
+579ffa72fbd1 ("net: hns3: add new ras error type for roce")<br/>
+f5804f8184d2 ("net: hns3: Add configuration of TM QCN error event")<br/>
+9e328d92bf28 ("net: hns3: add error handling compatibility during initialization")<br/>
+9c28a3a6cf4e ("net: hns3: update error recovery module and type")<br/>
+67abcd0c541f ("net: hns3: add support for imp-handle ras capability")<br/>
+ce9918424850 ("net: hns3: add the RAS compatibility adaptation solution")<br/>
+0a824254b900 ("net: hns3: add support for handling all errors through MSI-X")<br/>
+b81168e14576 ("net: hns3: add scheduling logic for error handling task")<br/>
 47b7b06483e5 ("net: hns3: add a separate error handling task")
 
-RoCE patches：
-3f324a33a5ee ("RDMA/hns: Recover 1bit-ECC error of RAM on chip")
+RoCE patches：<br/>
+3f324a33a5ee ("RDMA/hns: Recover 1bit-ECC error of RAM on chip")<br/>
 d72651e67adf ("RDMA/hns: Remove unused abnormal interrupt of type RAS")
 
-ZIP/SEC/HPRE patches：
-1bd95691721a ("crypto: hisilicon/qm - disable queue when 'CQ' error")
-a21f0b033677 ("crypto: hisilicon/qm - adjust order of device error configuration")
-f27a89de78a5 ("crypto: hisilicon - enable new error types for QM")
-209f72ee5caf ("crypto: hisilicon - add new error type for SEC")
-d6ff658aa0c2 ("crypto: hisilicon - support new error types for ZIP")
-0fc481e406d3 ("crypto: hisilicon/hpre - add two RAS correctable errors processing")
+ZIP/SEC/HPRE patches：<br/>
+1bd95691721a ("crypto: hisilicon/qm - disable queue when 'CQ' error")<br/>
+a21f0b033677 ("crypto: hisilicon/qm - adjust order of device error configuration")<br/>
+f27a89de78a5 ("crypto: hisilicon - enable new error types for QM")<br/>
+209f72ee5caf ("crypto: hisilicon - add new error type for SEC")<br/>
+d6ff658aa0c2 ("crypto: hisilicon - support new error types for ZIP")<br/>
+0fc481e406d3 ("crypto: hisilicon/hpre - add two RAS correctable errors processing")<br/>
 df1e4706d0a3 ("crypto: hisilicon/hpre - delete ECC 1bit error reported threshold")
 
 ### 特性3：内存不可纠正错误memory failure处理
@@ -186,12 +185,26 @@ drivers/pci/pcie/
 - 支持版本：
 openEuler 22.03 lts、 openEuler 22.03 lts sp1
 
-- 回合的关键patches：
-4d25fd1e66e5 ("PCI/AER: Add RCEC AER error injection support")
-b05f40fa3d26 ("PCI/AER: Add pcie_walk_rcec() to RCEC AER handling")
-e149d280e516 ("PCI/ERR: Recover from RCiEP AER errors")
+- 回合的关键patches：<br/>
+4d25fd1e66e5 ("PCI/AER: Add RCEC AER error injection support")<br/>
+b05f40fa3d26 ("PCI/AER: Add pcie_walk_rcec() to RCEC AER handling")<br/>
+e149d280e516 ("PCI/ERR: Recover from RCiEP AER errors")<br/>
 a34e781b667c ("PCI/ERR: Recover from RCEC AER errors")
 
+- 测试步骤：
+1、依赖测试工具：devmem<br/>
+在发布的openEuler版本中devmem是不支持使用的，若要使用devmem命令需要重新编译内核，将内核Config选项改为：CONFIG_STRICT_DECMEM=n。<br/>
+2、采用einj方式注错CE错误，首先要安装einj驱动，后台运行rasdaemon：<br/>
+modprobe einj<br/>
+rasdaemon -r -f&<br/>
+3、查看PCIe设备信息，计算BDF值，这里只关注DeviceID，Bus和Function等信息可以用0填充，BDF值为原来的DeviceID左移11位得到的十六进制的数，BDF值 = DeviceID << B ：<br/>
+lspci -tv<br/>
+4、执行注错操作：<br/>
+echo 0x40 > /sys/kernel/debug/apei/einj/error_type<br/>
+echo BDF值 > /sys/kernel/debug/apei/einj/param1<br/>
+echo 1 > /sys/kernel/debug/apei/einj/notrigger<br/>
+echo 1 > /sys/kernel/debug/apei/einj/error_inject<br/>
+5、查看内核打印和rasdaemon打印。<br/>
 
 ### 特性6：内存可纠正错误在线Page隔离
 
@@ -206,6 +219,15 @@ ras-page-isolation.c
 
 - 支持版本：
 openEuler 22.03 lts、 openEuler 22.03 lts sp1
+
+- 测试步骤：
+1、修改环境变量内存CE错误阈值为M次，内存CE错误时间间隔为N分钟：<br/>
+export PAGE_CE_THRESHOLD="M"<br/>
+export PAGE_CE_REFRESH_CYCLE="Nm"<br/>
+2、后台运行rasdaemon，运行后查看rasdaemon打印的阈值和时间间隔是否与配置的一致：<br/>
+rasdaemon -r -f&<br/>
+3、在时间间隔N内，对同一页内的不同内存地址注入CE错误，注错次数达到M次，内存CE错误注错请参考特性8中的案例：<br/>
+4、查看rasdaemon是否有内存隔离打印。<br/>
 
 ### 特性7：CPU核故障预测与在线隔离
 
@@ -223,16 +245,15 @@ openEuler 22.03 lts、 openEuler 22.03 lts sp1
 
 - 特别说明：
 1、openEuler取的rasaemon主线v0.6.7的版本，尚未支持该特性，openEuler另外增加了patch来实现该功能的。
-具体可参见rasdaemon.spec文件，里面有详细修改记录。
-2、 依赖以下内核态patch
+具体可参见rasdaemon.spec文件，里面有详细修改记录。<br/>
+2、 依赖以下内核态patch<br/>
 fe3f0ee8a5f5 ("RAS: Report ARM processor information to userspace")
-
 
 ### 特性8：故障信息带内收集
 
 - 特性详解：
 
-RAS错误信息收集，是问题定位和故障预测及处理的基础。鲲鹏920系列处理器采用固件优先的RAS处理框架，通过APEI表格的GHESv2格式，把错误记录统一上报给Linux内核，Linux内核使用Trace point事件上报给用户态，最后由Linux社区通用RAS错误信息收集工具rasdaemon，完成收集。
+RAS错误信息收集，是问题定位和故障预测及处理的基础。鲲鹏系列处理器采用固件优先的RAS处理框架，通过APEI表格的GHESv2格式，把错误记录统一上报给Linux内核，Linux内核使用Trace point事件上报给用户态，最后由Linux社区通用RAS错误信息收集工具rasdaemon，完成收集。
 
 - 源码仓库：
 https://gitee.com/src-openeuler/rasdaemon
@@ -242,3 +263,26 @@ non-standard-hisilicon.c、non-standard-hisi_hip08.c
 
 - 支持版本：
 openEuler 22.03 lts、 openEuler 22.03 lts sp1
+
+- 测试rasdaemon收集内存CE错误步骤：
+1、内存CE错误采用einj方式注错，首先要安装einj驱动，后台运行rasdaemon：<br/>
+modprobe einj<br/>
+rasdaemon -r -f&<br/>
+2、通过numactl查看当前服务器的NUMA配置：<br/>
+numactl -H<br/>
+通过numactl将测试程序绑定到指定的CPU core(node1)<br/>
+numactl -C 32-63 mca-recover&<br/>
+查看结果，得到PID 与物理地址<br/>
+3、假设PID为23456，查看CPU core是否绑定成功<br/>
+taskset -cp 23456<br/>
+4、假设地址为0x50000000，执行注错操作：<br/>
+echo 0x8 > /sys/kernel/debug/apei/einj/error_type<br/>
+echo 0x50000000 > /sys/kernel/debug/apei/einj/param1<br/>
+echo 0xfffffffffffffff0 > /sys/kernel/debug/apei/einj/param2<br/>
+echo 1 > /sys/kernel/debug/apei/einj/notrigger<br/>
+echo 1 > /sys/kernel/debug/apei/einj/error_inject<br/>
+触发错误<br/>
+devmem 0x50000000 32 0x1<br/>
+devmem 0x50000000 32<br/>
+5、查看内核日志打印：<br/>
+dmesg
