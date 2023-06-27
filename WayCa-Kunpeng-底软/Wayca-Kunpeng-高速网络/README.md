@@ -10,5 +10,11 @@
 - WayCa-Kunpeng-高速网络-板载网卡驱动模块特性介绍.md
 - https://gitee.com/openeuler/Wayca/wayca-Kunpeng-高速网络/WayCa-Kunpeng-高速网络-板载网卡驱动特性介绍.md
 
+## RoCE RDMA-CORE 技术文档
 
+- WayCa-Kunpeng-高速网络-RoCE用户使用指南.md
+- gitee.com/openeuler/WayCa/blob/master/WayCa-Kunpeng-底软/WayCa-Kunpeng-高速网络/WayCa-Kunpeng-高速网络-RoCE用户使用指南.md
+
+- WayCa-Kunpeng-高速网络-RoCE驱动特性介绍.md
+- gitee.com/openeuler/WayCa/blob/master/WayCa-Kunpeng-底软/WayCa-Kunpeng-高速网络/WayCa-Kunpeng-高速网络-RoCE驱动特性介绍.md
 
