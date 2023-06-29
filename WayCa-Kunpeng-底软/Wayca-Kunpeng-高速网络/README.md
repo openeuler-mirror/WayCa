@@ -18,3 +18,10 @@
 - WayCa-Kunpeng-高速网络-RoCE驱动特性介绍.md
 - gitee.com/openeuler/WayCa/blob/master/WayCa-Kunpeng-底软/WayCa-Kunpeng-高速网络/WayCa-Kunpeng-高速网络-RoCE驱动特性介绍.md
 
+## DPDK 技术文档
+- WayCa-Kunpeng-高速网络-板载网卡DPDK驱动使用指南.md
+- gitee.com/openeuler/WayCa/blob/master/WayCa-Kunpeng-底软/WayCa-Kunpeng-高速网络/WayCa-Kunpeng-高速网络-板载网卡DPDK驱动使用指南.md
+
+- WayCa-Kunpeng-高速网络-板载网卡DPDK驱动特性介绍.md
+- gitee.com/openeuler/WayCa/blob/master/WayCa-Kunpeng-底软/WayCa-Kunpeng-高速网络/WayCa-Kunpeng-高速网络-板载网卡DPDK驱动特性介绍.md
+
