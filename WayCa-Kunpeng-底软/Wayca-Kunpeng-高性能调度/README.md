@@ -38,3 +38,8 @@
 
 - Wayca-Kunpeng-高性能调度-ECV用户使用指南.md
 - https://gitee.com/openeuler/WayCa
+
+### MPAM用户使用指南
+
+- Wayca-Kunpeng-高性能调度-MPAM用户使用指南.md
+- https://gitee.com/openeuler/WayCa

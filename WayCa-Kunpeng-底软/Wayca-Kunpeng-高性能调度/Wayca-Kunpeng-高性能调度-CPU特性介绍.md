@@ -179,3 +179,81 @@ armv8.7引入ECV特性来读取系统用计数器，以减小为了确保指令�
 | 1aee5d7a8120c | arm64: move from arm_generic to arm_arch_timer | Y |
 | 0583fe478a7d9 | ARM: convert arm/arm64 arch timer to use CLKSRC_OF init | Y |
 | 4ad499c94264a | Documentation: Add ARM64 to kernel-parameters.rst | Y |
+
+### 特性6：MPAM(Memory Partitioning And Monitoring Extension)
+
+- 特性详解
+
+MPAM（Memory Partitioning And Monitoring Extension）是Armv8.4体系结构引入的可选扩展。MPAM仅在AArch64下支持。MPAM扩展为内存系
+统组件控件提供了一个框架，支持对组件的一个或多个资源进行分区。
+
+MPAM软件包括两个部分：MPAM资源池的发现和初始化和Cache/memory资源的分区管理。MPAM当前通过Linux的resctrl（复用x86 RDT的对外接口）
+进行控制。
+
+Cache/memory带宽资源的分区管理部分承接用户态接口的输入输出和资源池之间的交互，该部分参考原x86 RDT的实现，并进行适当拓展，其中包
+括：通过SMMU对IO增加partID标记接口，重新设计实现L2/L3 cdp机制，增加MPAM特有的L2/L3/MB优先级控制接口等。
+
+当前Linux主线没有支持MPAM特性，openEuler实现了该特性，且当前仅为preview特性。关于MPAM在openEuler上支持及使能也可以参考
+[openEuler社区仓库](https://gitee.com/openeuler/community)的MPAM文档sig/Kernel/mpam.md。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/kernel/mpam
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| openeuler OLK5.10 COMMITID | SUBJECT |
+| ---------- | -------- |
+| 073090c4f9e4 | arm64/mpam: debug: print debug info when create mon_data |
+| 004963a037e0 | arm64/mpam: add group partid/pmg to tasks show |
+| 26d503ccaf97 | arm64/mpam: pass rdtgroup when create mon_data dir |
+| c89d858c75ed | arm64/mpam: support monitor read |
+| 7f42238eb878 | arm64/mpam: support monitor |
+| 285671724491 | arm64/mpam: support num_partids/num_pmgs |
+| ff75ea02b109 | arm64/mpam: add mpam extension runtime detection |
+| 2d21a72d73fd | arm64/mpam: print mpam caps info when booting |
+| 36162d6f7918 | arm64/mpam: disable MPAM_SYS_REG_DEBUG |
+| 260d3f830a87 | arm64/mpam: support monitor |
+| 32b8643fe582 | arm64/mpam: operation not permitted when remove a ctrl group with a mondata |
+| 6910641acc13 | arm64/mpam: free mon when remove momgroups |
+| 453c7520c6be | arm64/mpam: mon: add WARN_ON for debug free_pmg |
+| 5c8245a49e5b | arm64/mpam: add num_monitors in info dir |
+| 7ebf22416b68 | arm64/mpam: get num_mon & num_pmg from hardware |
+| 82fea323c009 | arm64/mpam: don't reserve mon 0, we can use it as nomarl |
+| 577782afdfbb | arm64/mpam: get alloc/mon capable/enabled from h/w |
+| 7d1fba341864 | arm64/mpam: alloc/mon capable/enabled debug |
+| 13fcfa015754 | arm64/mpam: add L3TALL & HHALL |
+| 99f06cbe3464 | arm64/mpam: enable alloc/mon capable when MPAM enabled |
+| b0b8538e197b | arm64/mpam: monitor pmg as a property of partid |
+| 5bb872c2473d | arm64/mpam: fix HHA MAX SET/GET operation |
+| fdb02ee44ed3 | arm64/mpam: don't allowd create mon_groups when out of mon/pmg |
+| 7770d6e5a35a | arm64/mpam: use 5% as min memory bandwidth |
+| 45f455df5bb5 | arm64/mpam: debug: remove debug pr_info at schemata |
+| 145a91948fff | arm64/mpam: support L3TALL, HHALL |
+| f2f34e16f22b | arm64/mpam: hard code mpam resource for Hi1620 2P |
+| ed1d8ee9d757 | arm64/mpam: add cmdline option: mpam |
+| 294eb2438565 | arm64/mpam: fix compile warning |
+| cceab46d57d4 | mpam: Code security rectification |
+| 593cba04174e | mpam: fix potential resource leak in mpam_domains_init |
+| 74aab3fda289 | arm64/mpam: fix hard code address map for 1620 2P |
+| fb55aed51c62 | arm64/mpam: destroy domain list when failed to init |
+| fc426834088c | arm64/mpam: unmap all previous address when failed |
+| 4bf3613e3b1a | arm64/mpam: only add new domain node to domain list |
+| 0833601fa952 | arm64/mpam: remove unsupported resource |
+| 8a74962dfb8a | arm64/mpam: update group flags only when enable sucsses |
+| 143014f76c3e | arm64/mpam: get num_partids from system regs instead of hard code |
+| 843a90dbbf20 | arm64/mpam: correct num of partid/pmg |
+| 8e62aa8be825 | arm64/mpam: remove unnecessary debug message and dead code |
+| 9525089d5fb5 | arm64/mpam: fix a missing unlock in error branch |
+| aa65a72294f3 | arm64/mpam: cleanup debuging code |
+| 59890b617805 | arm64/mpam: use snprintf instead of sprintf |
+| 434eea4a4fc8 | mpam : fix missing fill MSMON_CFG_MON_SEL register |
+| 8d83a69d9250 | mpam : fix monitor's disorder from |
+| 1fef4872ac94 | arm64/mpam: cleanup the source file's licence |
+| 5c3d89e3ae43 | ACPI 6.x: Add definitions for MPAM table |
+| d43a6c0c538f | MPAM / ACPI: Refactoring MPAM init process and set MPAM ACPI as entrance |
+| 88520d2383ac | arm64/mpam: Fix unreset resources when mkdir ctrl group or umount resctrl |
+| dfa6e6512f5a | arm64/mpam: Supplement err tips in info/last_cmd_status |
+| 1ce09eed3e96 | arm64/mpam: Preparing for MPAM refactoring |
+| a2e55a9889e5 | arm64/mpam: Add mpam driver discovery phase and kbuild boiler plate |
