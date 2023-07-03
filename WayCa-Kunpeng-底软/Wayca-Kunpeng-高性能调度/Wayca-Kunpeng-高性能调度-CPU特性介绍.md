@@ -153,3 +153,29 @@ LSE仅在A64中支持, 要求在Armv8.1及之后的版本必须实现。
 | 6059a7b6e818 | arm64: atomics: implement atomic{,64}_cmpxchg using cmpxchg | Y |
 | db26217e6f54 | arm64: atomic64_dec_if_positive: fix incorrect branch condition | Y |
 | 95eff6b27c40 | arm64: kconfig: select HAVE_CMPXCHG_LOCAL | Y |
+
+### 特性5：ECV(Enhanced Counter Virtualization)
+
+- 特性详解
+
+armv8.7引入ECV特性来读取系统用计数器，以减小为了确保指令执行顺序而设置isb(内存屏障)带来的开销。ECV提供了一组与通用寄存器对照的
+自同步寄存器，可读取这组映射通用计数器值的寄存器从而减少isb带来的开销。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/kernel arch/arm64/include/asm drivers/clocksource/
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| COMMITID | SUBJECT | openeuler OLK-5.10 enabled（Y/N） |
+| ---------- | ---------- | ----------- |
+| 57f27666f91a8 | clocksource/arm_arch_timer: Drop use of static key in arch_timer_reg_read_stable | Y |
+| 68b0fd268c118 | arm64: Add CNT{P,V}CTSS_EL0 alternatives to cnt{p,v}ct_el0 | Y |
+| 6acc71ccac718 | arm64: arch_timer: Allows a CPU-specific erratum to only affect a subset of CPUs | Y |
+| f31e98bfae1c8 | arm64: arch_timer: mark functions as __always_inline | Y |
+| 0ea415390cd34 | clocksource/arm_arch_timer: Use arch_timer_read_counter to access stable counters | Y |
+| 75a19a0202db2 | arm64: arch_timer: Ensure counter register reads occur with seqlock held | Y |
+| 1aee5d7a8120c | arm64: move from arm_generic to arm_arch_timer | Y |
+| 0583fe478a7d9 | ARM: convert arm/arm64 arch timer to use CLKSRC_OF init | Y |
+| 4ad499c94264a | Documentation: Add ARM64 to kernel-parameters.rst | Y |
