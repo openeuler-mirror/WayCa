@@ -284,3 +284,22 @@ Cache/memory带宽资源的分区管理部分承接用户态接口的输入输�
 | 4d6a38da8e79e | arm64: entry: always set GIC_PRIO_PSR_I_SET during entry | Y |
 | 09cf57eba3042 | KVM: arm64: Split hyp/switch.c to VHE/nVHE | Y |
 | 336780590990e | irqchip/gic-v3: Support pseudo-NMIs when SCR_EL3.FIQ == 0 | Y |
+
+### 特性8：TWED(Trapping of WFE and WFET)
+
+- 特性详解
+
+armv8.7引入TWED特性来延迟WFE指令的捕获，WFE指令在所有异常级别都可用。通过在EL0、EL1或EL2执行的软件尝试进入低功耗状态，可以配置
+为陷阱到更高的异常级别。如果FEAT_TWED使能，那么可以配置WFE陷阱前的延迟。如果配置了WFE陷阱前的延迟，则延迟不会影响陷阱的优先级。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/include/ arch/arm64/kernel/
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| COMMITID | SUBJECT | openeuler OLK-5.10 enabled（Y/N） |
+| ---------- | ---------- | ----------- |
+| 9c8b91e8dbf72 | KVM: arm64: Make use of TWED feature | Y |
+| 1d9393307f4f4 | arm64: cpufeature: TWED support detection | Y |
