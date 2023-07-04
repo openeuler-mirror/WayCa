@@ -257,3 +257,30 @@ Cache/memory带宽资源的分区管理部分承接用户态接口的输入输�
 | dfa6e6512f5a | arm64/mpam: Supplement err tips in info/last_cmd_status |
 | 1ce09eed3e96 | arm64/mpam: Preparing for MPAM refactoring |
 | a2e55a9889e5 | arm64/mpam: Add mpam driver discovery phase and kbuild boiler plate |
+
+### 特性7：NMI(Non-maskable Interrupts)
+
+- 特性详解
+
+在arm v8.8之前的版本中并不支持硬件的NMI中断，但是GIC支持中断的优先级功能，通过该特性可以模拟NMI中断。本文主要描述的是模拟NMI中断
+（pseudo-NMI），当前主线及openEuler在鲲鹏上实现的也是pseudo-NMI中断。需要注意的是，不同于硬件NMI中断，pseudo-NMI实际上并不是完
+全不可屏蔽的。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/include/asm/ drivers/irqchip/ arch/arm64/kernel/
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| COMMITID | SUBJECT | openeuler OLK-5.10 enabled（Y/N） |
+| ---------- | ---------- | ----------- |
+| f226650494c6a | arm64: Relax ICC_PMR_EL1 accesses when ICC_CTLR_EL1.PMHE is clear | Y |
+| 8848f0665b3cd | arm64: Add cpuidle context save/restore helpers | Y |
+| bc3c03ccb4641 | arm64: Enable the support of pseudo-NMIs | Y |
+| b90d2b22afdc7 | arm64: cpufeature: Add cpufeature for IRQ priority masking | Y |
+| 26dc129342cfc | irq: arm64: perform irqentry in entry code | Y |
+| 133d05186325c | arm64: Make PMR part of task context | Y |
+| 4d6a38da8e79e | arm64: entry: always set GIC_PRIO_PSR_I_SET during entry | Y |
+| 09cf57eba3042 | KVM: arm64: Split hyp/switch.c to VHE/nVHE | Y |
+| 336780590990e | irqchip/gic-v3: Support pseudo-NMIs when SCR_EL3.FIQ == 0 | Y |
