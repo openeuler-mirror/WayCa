@@ -1,4 +1,4 @@
-# WayCa SIG 鲲鹏板载网卡DPDK驱动使用指南
+﻿# WayCa SIG 鲲鹏板载网卡DPDK驱动使用指南
 
 ## 1. DPDK安装
 ### 1.1 DPDK库安装
@@ -7,7 +7,7 @@
 对于Openeuler-22.03及以上版本，可以使用以上方式进行安装。若使用Openeuler-22.03以下的版本，其中配套的DPDK版本较早，hns3驱动未回合任何bugfix且功能不完备，建议不要使用这种方式安装DPDK库。
 
 ### 1.2 源码安装
-从DPDK官网(http://core.dpdk.org/download/)下载目标版本的最新LTS版本源码，
+从DPDK官网(http://core.dpdk.org/download/) 下载目标版本的最新LTS版本源码。  
 注意：社区维护的LTS版本会定期回合bugfix，建议产品迭代时也定期从对应稳定分支回合bugfix。
 
 #### 1.2.1 安装依赖包
@@ -18,18 +18,18 @@
 
 > meson build && ninja -C build
 
-若欲编译DPDK工程中的example，可在编译时增加-Dexamples参数，如“-Dexamples=l2fwd,l3fwd”。
+若欲编译DPDK工程中的example，可在编译时增加-Dexamples参数，如“-Dexamples=l2fwd,l3fwd”。  
 更详细的编译说明，请阅DPDK的官方指导：http://doc.dpdk.org/guides/linux_gsg/build_dpdk.html
 
 
 ## 2. 大页配置
 以下以2M大页为例进行说明。
 * 挂载大页：
-> mkdir -p /mnt/huge 
+> mkdir -p /mnt/huge  
 > mount -t hugetlbfs hugetlbfs /dev/hugepages -o "pagesize=2M" 
 
 * 给每个node分配大页：
-> echo 512 > /sys/devices/system/node/nodeX/hugepages/hugepages-2048kB/nr_hugepages
+> echo 512 > /sys/devices/system/node/nodeX/hugepages/hugepages-2048kB/nr_hugepages  
 > (nodeX表示node0, node1, node2, node3)
 
 * 或者通过以下命令给每个node均分指定的大页数：
@@ -61,7 +61,7 @@ DPDK工程中提供了查询和绑定网卡的python脚本，基本使用方法�
 > echo 1 > /sys/module/vfio/parameters/enable_unsafe_noiommu_mode
 
 关SMMU时或者使用如下命令配置no-iommu模式：
-> modprobe vfio enable_unsafe_noiommu_mode=1
+> modprobe vfio enable_unsafe_noiommu_mode=1  
 modprobe vfio-pci
 
 （2）将网卡从内核态绑定到用户态
@@ -159,18 +159,18 @@ testpmd> show fwd stats all
 ```
 
 ## 5. 常用dump工具
-* proc_info工具
-一般以从进程方式运行，调用框架接口进行信息查询。该app必须与主进程的程序一起编译方可使用。
+* proc_info工具  
+一般以从进程方式运行，调用框架接口进行信息查询。该app必须与主进程的程序一起编译方可使用。  
 具体使用方法见官网http://doc.dpdk.org/guides/tools/proc_info.html。
 
-* telemetry工具【强烈推荐】
-借助telemetry库，dpdk-telemetry.py脚本使用socket unix套接字与主进程进行消息交互。DPDK库中若注册telemetry命令，则可支持查询。
+* telemetry工具【强烈推荐】  
+借助telemetry库，dpdk-telemetry.py脚本使用unix socket套接字与主进程进行消息交互。DPDK库中若注册telemetry命令，则可支持查询。
 
 运行如下(rte_lee是DPDK的--file-prefix指定的名字)：
 
 ```
->dpdk-telemetry.py -f rte_lee
->Connecting to /var/run/dpdk/rte_lee/dpdk_telemetry.v2
+dpdk-telemetry.py -f rte_lee
+Connecting to /var/run/dpdk/rte_lee/dpdk_telemetry.v2
 {
   "version": "DPDK 21.11.0",
   "pid": 240843,
@@ -303,34 +303,33 @@ Connected to application: "dpdk-testpmd"
 
 ## 6. 常见问题
 
-[1] meson编译报错
+[1] meson编译报错  
 现象：编译DPDK报caspl指令错误
 ![](./images/compile_error_image.png)
 
-原因：21.11支持了128bit比较交换原子指令操作，使用casp指令。鲲鹏920支持该指令，但版本小于9的gcc是不支持__ARM_FEATURE_ATOMICS，如果gcc版本比较低，就会报以上错误。
-解决办法：
-(1)升级gcc 
-(2)通过-Ddisable_drivers=*/octeontx*,*/cnxk 选项屏蔽报错驱动。
+原因：21.11支持了128bit比较交换原子指令操作，使用casp指令。鲲鹏920支持该指令，但版本小于9的gcc是不支持__ARM_FEATURE_ATOMICS，如果gcc版本比较低，就会报以上错误。   
+解决办法：  
+(1)升级gcc  
+(2)通过-Ddisable_drivers=*/octeontx*,*/cnxk 选项屏蔽报错驱动。  
 PS: 若使用动态库编译时遇到，则可增加-march =armv8.2-a的方式编译。
 
-[2] 网口的link状态为down
-解决办法：
-(1)电口：关自协商时，两端速率配置是否一致
+[2] 网口的link状态为down  
+解决办法：  
+(1)电口：关自协商时，两端速率配置是否一致  
 (2)光口：i) 两端自协商状态是否一致; ii)两端自协商关闭时，观察两端速率配置是否一致，FEC模式配置是否一致。
 
-
 [3] 网口报”media type is copper, not supported.“
-![](./images/copper_image.png)
-原因：DPDK hns3 PF驱动只有固件支持phy驱动，才支持电口设备。
+![](./images/copper_image.png)  
+原因：DPDK hns3 PF驱动只有固件支持phy驱动，才支持电口设备。  
 解决办法：将板载网卡上的电口插卡换成光口插卡。或者使用电口设备使能SRIOV，将VF绑定到DPDK使用。
 
 [4] 网卡收不到报文
-解决办法：
-    - 混杂是否使能，如果未使能，则查看报文目的MAC是否是网卡的地址。
-    - 排查报文是否是VLAN报文，是否使能了VLAN过滤，若VLAN过滤使能了，是否配置了该VLAN ID。
+解决办法：  
+    - 混杂是否使能，如果未使能，则查看报文目的MAC是否是网卡的地址。  
+    - 排查报文是否是VLAN报文，是否使能了VLAN过滤，若VLAN过滤使能了，是否配置了该VLAN ID。  
     - 如果是VLAN报文，但应用未使能VLAN过滤，则可能是驱动默认将VLAN过滤使能了。请查看所使用的DPDK版本，如果为19.11.3以前的LTS版本，则查看是否有回合以下patch: c6f7d7594934 ("net/hns3: fix default VLAN filter configuration for PF")
 
-[5]  stats统计中bytes和imiss统计项为0
+[5]  stats统计中bytes和imiss统计项为0  
 解决办法：驱动自21.05以后的版本开始才支持该功能，查看是否回合如下patch，建议升级DPDK：
 
 |  Commit ID | Subject  | Tag  |OpenEuler合入状态<br><Y/N> |
@@ -339,6 +338,5 @@ PS: 若使用动态库编译时遇到，则可增加-march =armv8.2-a的方式�
 |0f10bd6b1fb3 |[net/hns3: support imissed stats for PF/VF](https://git.dpdk.org/next/dpdk-next-net/commit/?id=0f10bd6b1fb3d1981e9d4d82bb4473c75e634980)| DPDK-21.11 | Y |
 |3e9f3042d7c8 |[net/hns3: add imissed packet stats](https://git.dpdk.org/next/dpdk-next-net/commit/?id=3e9f3042d7c80f90158ff6227981913a2074aece)| DPDK-21.05 | Y |
 
-
-[6] 绑网卡到用户态时报"vfio-pci: probe of 0000:06:00.0 failed with error -22"错误：
+[6] 绑网卡到用户态时报"vfio-pci: probe of 0000:06:00.0 failed with error -22"错误：  
 解决办法：建议查看SMMU的开关状态，关SMMU时，必须将vfio_pci工作在noiommu模式。
