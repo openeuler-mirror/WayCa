@@ -78,6 +78,7 @@ PR_SVE_GET_VL
 ## 5.测试用例
 
 以数组加权相加功能函数为例，一个为非sve版本函数，一个为sve版本函数
+```
 void daxpy_1_1_no_sve(int64_t n, double da, double *dx, double *dy)
 {
         for (int64_t i = 0; i < n; ++i) {
@@ -85,7 +86,7 @@ void daxpy_1_1_no_sve(int64_t n, double da, double *dx, double *dy)
         }
 }
 
-include <arm_sve.h>
+#include <arm_sve.h>
 void daxpy_1_1(int64_t n, double da, double *dx, double *dy)
 {
         int64_t i = 0;
@@ -100,5 +101,6 @@ void daxpy_1_1(int64_t n, double da, double *dx, double *dy)
                 }
         while (svptest_any(svptrue_b64(), pg));
 }
+```
 
 使用gcc -march=armv8-a+sve xxx.c  xxx命令在不支持sve系统与支持sve系统上分别运行./xxx运行

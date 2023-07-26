@@ -153,3 +153,153 @@ LSE仅在A64中支持, 要求在Armv8.1及之后的版本必须实现。
 | 6059a7b6e818 | arm64: atomics: implement atomic{,64}_cmpxchg using cmpxchg | Y |
 | db26217e6f54 | arm64: atomic64_dec_if_positive: fix incorrect branch condition | Y |
 | 95eff6b27c40 | arm64: kconfig: select HAVE_CMPXCHG_LOCAL | Y |
+
+### 特性5：ECV(Enhanced Counter Virtualization)
+
+- 特性详解
+
+armv8.7引入ECV特性来读取系统用计数器，以减小为了确保指令执行顺序而设置isb(内存屏障)带来的开销。ECV提供了一组与通用寄存器对照的
+自同步寄存器，可读取这组映射通用计数器值的寄存器从而减少isb带来的开销。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/kernel arch/arm64/include/asm drivers/clocksource/
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| COMMITID | SUBJECT | openeuler OLK-5.10 enabled（Y/N） |
+| ---------- | ---------- | ----------- |
+| 57f27666f91a8 | clocksource/arm_arch_timer: Drop use of static key in arch_timer_reg_read_stable | Y |
+| 68b0fd268c118 | arm64: Add CNT{P,V}CTSS_EL0 alternatives to cnt{p,v}ct_el0 | Y |
+| 6acc71ccac718 | arm64: arch_timer: Allows a CPU-specific erratum to only affect a subset of CPUs | Y |
+| f31e98bfae1c8 | arm64: arch_timer: mark functions as __always_inline | Y |
+| 0ea415390cd34 | clocksource/arm_arch_timer: Use arch_timer_read_counter to access stable counters | Y |
+| 75a19a0202db2 | arm64: arch_timer: Ensure counter register reads occur with seqlock held | Y |
+| 1aee5d7a8120c | arm64: move from arm_generic to arm_arch_timer | Y |
+| 0583fe478a7d9 | ARM: convert arm/arm64 arch timer to use CLKSRC_OF init | Y |
+| 4ad499c94264a | Documentation: Add ARM64 to kernel-parameters.rst | Y |
+
+### 特性6：MPAM(Memory Partitioning And Monitoring Extension)
+
+- 特性详解
+
+MPAM（Memory Partitioning And Monitoring Extension）是Armv8.4体系结构引入的可选扩展。MPAM仅在AArch64下支持。MPAM扩展为内存系
+统组件控件提供了一个框架，支持对组件的一个或多个资源进行分区。
+
+MPAM软件包括两个部分：MPAM资源池的发现和初始化和Cache/memory资源的分区管理。MPAM当前通过Linux的resctrl（复用x86 RDT的对外接口）
+进行控制。
+
+Cache/memory带宽资源的分区管理部分承接用户态接口的输入输出和资源池之间的交互，该部分参考原x86 RDT的实现，并进行适当拓展，其中包
+括：通过SMMU对IO增加partID标记接口，重新设计实现L2/L3 cdp机制，增加MPAM特有的L2/L3/MB优先级控制接口等。
+
+当前Linux主线没有支持MPAM特性，openEuler实现了该特性，且当前仅为preview特性。关于MPAM在openEuler上支持及使能也可以参考
+[openEuler社区仓库](https://gitee.com/openeuler/community)的MPAM文档sig/Kernel/mpam.md。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/kernel/mpam
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| openeuler OLK5.10 COMMITID | SUBJECT |
+| ---------- | -------- |
+| 073090c4f9e4 | arm64/mpam: debug: print debug info when create mon_data |
+| 004963a037e0 | arm64/mpam: add group partid/pmg to tasks show |
+| 26d503ccaf97 | arm64/mpam: pass rdtgroup when create mon_data dir |
+| c89d858c75ed | arm64/mpam: support monitor read |
+| 7f42238eb878 | arm64/mpam: support monitor |
+| 285671724491 | arm64/mpam: support num_partids/num_pmgs |
+| ff75ea02b109 | arm64/mpam: add mpam extension runtime detection |
+| 2d21a72d73fd | arm64/mpam: print mpam caps info when booting |
+| 36162d6f7918 | arm64/mpam: disable MPAM_SYS_REG_DEBUG |
+| 260d3f830a87 | arm64/mpam: support monitor |
+| 32b8643fe582 | arm64/mpam: operation not permitted when remove a ctrl group with a mondata |
+| 6910641acc13 | arm64/mpam: free mon when remove momgroups |
+| 453c7520c6be | arm64/mpam: mon: add WARN_ON for debug free_pmg |
+| 5c8245a49e5b | arm64/mpam: add num_monitors in info dir |
+| 7ebf22416b68 | arm64/mpam: get num_mon & num_pmg from hardware |
+| 82fea323c009 | arm64/mpam: don't reserve mon 0, we can use it as nomarl |
+| 577782afdfbb | arm64/mpam: get alloc/mon capable/enabled from h/w |
+| 7d1fba341864 | arm64/mpam: alloc/mon capable/enabled debug |
+| 13fcfa015754 | arm64/mpam: add L3TALL & HHALL |
+| 99f06cbe3464 | arm64/mpam: enable alloc/mon capable when MPAM enabled |
+| b0b8538e197b | arm64/mpam: monitor pmg as a property of partid |
+| 5bb872c2473d | arm64/mpam: fix HHA MAX SET/GET operation |
+| fdb02ee44ed3 | arm64/mpam: don't allowd create mon_groups when out of mon/pmg |
+| 7770d6e5a35a | arm64/mpam: use 5% as min memory bandwidth |
+| 45f455df5bb5 | arm64/mpam: debug: remove debug pr_info at schemata |
+| 145a91948fff | arm64/mpam: support L3TALL, HHALL |
+| f2f34e16f22b | arm64/mpam: hard code mpam resource for Hi1620 2P |
+| ed1d8ee9d757 | arm64/mpam: add cmdline option: mpam |
+| 294eb2438565 | arm64/mpam: fix compile warning |
+| cceab46d57d4 | mpam: Code security rectification |
+| 593cba04174e | mpam: fix potential resource leak in mpam_domains_init |
+| 74aab3fda289 | arm64/mpam: fix hard code address map for 1620 2P |
+| fb55aed51c62 | arm64/mpam: destroy domain list when failed to init |
+| fc426834088c | arm64/mpam: unmap all previous address when failed |
+| 4bf3613e3b1a | arm64/mpam: only add new domain node to domain list |
+| 0833601fa952 | arm64/mpam: remove unsupported resource |
+| 8a74962dfb8a | arm64/mpam: update group flags only when enable sucsses |
+| 143014f76c3e | arm64/mpam: get num_partids from system regs instead of hard code |
+| 843a90dbbf20 | arm64/mpam: correct num of partid/pmg |
+| 8e62aa8be825 | arm64/mpam: remove unnecessary debug message and dead code |
+| 9525089d5fb5 | arm64/mpam: fix a missing unlock in error branch |
+| aa65a72294f3 | arm64/mpam: cleanup debuging code |
+| 59890b617805 | arm64/mpam: use snprintf instead of sprintf |
+| 434eea4a4fc8 | mpam : fix missing fill MSMON_CFG_MON_SEL register |
+| 8d83a69d9250 | mpam : fix monitor's disorder from |
+| 1fef4872ac94 | arm64/mpam: cleanup the source file's licence |
+| 5c3d89e3ae43 | ACPI 6.x: Add definitions for MPAM table |
+| d43a6c0c538f | MPAM / ACPI: Refactoring MPAM init process and set MPAM ACPI as entrance |
+| 88520d2383ac | arm64/mpam: Fix unreset resources when mkdir ctrl group or umount resctrl |
+| dfa6e6512f5a | arm64/mpam: Supplement err tips in info/last_cmd_status |
+| 1ce09eed3e96 | arm64/mpam: Preparing for MPAM refactoring |
+| a2e55a9889e5 | arm64/mpam: Add mpam driver discovery phase and kbuild boiler plate |
+
+### 特性7：NMI(Non-maskable Interrupts)
+
+- 特性详解
+
+在arm v8.8之前的版本中并不支持硬件的NMI中断，但是GIC支持中断的优先级功能，通过该特性可以模拟NMI中断。本文主要描述的是模拟NMI中断
+（pseudo-NMI），当前主线及openEuler在鲲鹏上实现的也是pseudo-NMI中断。需要注意的是，不同于硬件NMI中断，pseudo-NMI实际上并不是完
+全不可屏蔽的。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/include/asm/ drivers/irqchip/ arch/arm64/kernel/
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| COMMITID | SUBJECT | openeuler OLK-5.10 enabled（Y/N） |
+| ---------- | ---------- | ----------- |
+| f226650494c6a | arm64: Relax ICC_PMR_EL1 accesses when ICC_CTLR_EL1.PMHE is clear | Y |
+| 8848f0665b3cd | arm64: Add cpuidle context save/restore helpers | Y |
+| bc3c03ccb4641 | arm64: Enable the support of pseudo-NMIs | Y |
+| b90d2b22afdc7 | arm64: cpufeature: Add cpufeature for IRQ priority masking | Y |
+| 26dc129342cfc | irq: arm64: perform irqentry in entry code | Y |
+| 133d05186325c | arm64: Make PMR part of task context | Y |
+| 4d6a38da8e79e | arm64: entry: always set GIC_PRIO_PSR_I_SET during entry | Y |
+| 09cf57eba3042 | KVM: arm64: Split hyp/switch.c to VHE/nVHE | Y |
+| 336780590990e | irqchip/gic-v3: Support pseudo-NMIs when SCR_EL3.FIQ == 0 | Y |
+
+### 特性8：TWED(Trapping of WFE and WFET)
+
+- 特性详解
+
+armv8.7引入TWED特性来延迟WFE指令的捕获，WFE指令在所有异常级别都可用。通过在EL0、EL1或EL2执行的软件尝试进入低功耗状态，可以配置
+为陷阱到更高的异常级别。如果FEAT_TWED使能，那么可以配置WFE陷阱前的延迟。如果配置了WFE陷阱前的延迟，则延迟不会影响陷阱的优先级。
+
+- 源码仓库： https://gitee.com/openeuler/kernel/
+
+- 特性代码： arch/arm64/include/ arch/arm64/kernel/
+
+- 支持版本： openEuler 22.03 lts、openEuler 22.03 lts SP1
+
+- 回合的关键patches:
+| COMMITID | SUBJECT | openeuler OLK-5.10 enabled（Y/N） |
+| ---------- | ---------- | ----------- |
+| 9c8b91e8dbf72 | KVM: arm64: Make use of TWED feature | Y |
+| 1d9393307f4f4 | arm64: cpufeature: TWED support detection | Y |
