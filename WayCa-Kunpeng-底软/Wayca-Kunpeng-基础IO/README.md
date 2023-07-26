@@ -1,23 +1,8 @@
 
-# openEuler WayCa 鲲鹏 xxx
+# openEuler WayCa 鲲鹏 基础IO
 
-## xxx
 
-- 鲲鹏高速网络主要使用鲲鹏硬件xxx模块， 主要应用涉及xxx技术和xxx等高速网络技术。
-本文档提供了鲲鹏xx特性的基本使用和模块的特性介绍，具体内容详见如下：
+## SAS 技术文档
 
-## xxx 技术文档
-
-- WayCa-Kunpeng-xxx-xxx技术用户使用指南.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxx/xx文档
-
-- WayCa-Kunpeng-xxxx-xxx模块特性介绍.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxx/xx文档
-
-## Roce rdma-core 技术文档
-
-- WayCa-Kunpeng-xxxx-xxx技术用户使用指南.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxxx/xx文档
-
-- WayCa-Kunpeng-xxxx-xxx模块特性介绍.md
-- https://gitee.com/openeuler/xxx/wayca-Kunpeng-xxxx/xx文档
+- WayCa-Kunpeng-基础IO-SAS模块特性介绍.md
+https://gitee.com/openeuler/WayCa/blob/master/WayCa-Kunpeng-底软/Wayca-Kunpeng-基础IO/WayCa-Kunpeng-基础IO-SAS模块特性介绍.md

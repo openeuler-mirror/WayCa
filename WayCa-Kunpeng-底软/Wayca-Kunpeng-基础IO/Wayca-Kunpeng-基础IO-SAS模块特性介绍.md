@@ -9,23 +9,27 @@ SAS驱动是适配920系列处理器SAS控制器的驱动模块。SAS（Serial A
 
 ## 功能描述
 对于鲲鹏920系列SAS模块，支持的特性如下：
+
+
 - 兼容SAS3.0协议，同时向下兼容SAS2.0和SAS1.0
--支持SSP/SMP/STP
--支持连接SATA盘（非AHCI方式）
--支持SATA协议定义的NCQ
--支持最多1024个设备
--支持最多并发4096个IO
--支持宽端口（最多每个端口8个PHY）和窄端口模式
--支持SAS链接速率12/6/3/1.5Gbit/s自协商， SATA链接速率6/3/1.5Gbit/s自协商
--支持热插拔
--支持SAS DIF
--支持SAS MSI中断模式及中断聚合
--支持逻辑侧单个IO或整个盘的IO的abort
--支持错误以RAS方式上报
--支持DFX
--支持BIST
--支持直连LED
--支持SAS runtime PM
+- 支持SSP/SMP/STP
+- 支持连接SATA盘（非AHCI方式）
+- 支持SATA协议定义的NCQ
+- 支持最多1024个设备
+- 支持最多并发4096个IO
+- 支持宽端口（最多每个端口8个PHY）和窄端口模式
+- 支持SAS链接速率12/6/3/1.5Gbit/s自协商， SATA链接速率6/3/1.5Gbit/s自协商
+- 支持热插拔
+- 支持SAS DIF
+- 支持SAS MSI中断模式及中断聚合
+- 支持逻辑侧单个IO或整个盘的IO的abort
+- 支持错误以RAS方式上报
+- 支持DFX
+- 支持BIST
+- 支持直连LED
+- 支持SAS runtime PM
+
+
 
 ## 规格描述
 
