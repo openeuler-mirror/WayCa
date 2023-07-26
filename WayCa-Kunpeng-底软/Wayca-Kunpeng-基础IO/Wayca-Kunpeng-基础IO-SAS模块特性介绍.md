@@ -165,9 +165,6 @@ debug调测功能为用户提供异常场景下自动或手动dump寄存器及�
 自动dump功能在SAS控制器出现严重错误时（如internal abort命令超时）触发。
 手动dump可以在debugfs目录中通过命令 echo 1 > trigger_dump 对debugfs信息进行手动dump，完成dump后会在/sys/kernel/debug/hisi_sas/BDF_number/dump目录下生成相应信息。
 
-- debugfs dump接口展示
-
-![debugfs dump接口展示](http://image.huawei.com/tiny-lts/v1/images/adb310517372e6815b81e124704c972c_622x619.png)
 - FIFO功能
 
 FIFO功能是在接收硬件发出的触发信号后，收集相应的链路信息，并通过debugfs接口呈现给用户。FIFO功能为每个PHY提供7个配置接口以及1个展示dump数据的接口。
@@ -247,12 +244,7 @@ cat /sys/kernel/debug/hisi_sas/0000:30:04.0/fifo/0/fifo_data
 - 特性介绍
 
 鲲鹏920系列处理器SAS支持环回码流功能，此功能通过设置链接速率、码型、PHY ID、环回类型等参数让控制器产生对应的码流，从而通过产生的码流检验链路的质量以及控制器链路层和PHY层的逻辑速率的正确性。
-
-- BIST功能接口展示
-
-BIST功能依赖于debugfs，因此要使能BIST功能需要提前使能debugfs。在BIST使能后会生成如下文件。
-![图片说明](http://image.huawei.com/tiny-lts/v1/images/04fb39cd3444fde201f75bf7e35cb19a_767x814.png)
-
+BIST功能依赖于debugfs，因此要使能BIST功能需要提前使能debugfs。
 对于SAS BIST，组网要求与正常SAS控制器使用不一样：除remote模式外，其它模式不连接任何设备；remote模式需外接SAS环回头。
 
 - 涉及代码与使能
