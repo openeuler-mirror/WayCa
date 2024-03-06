@@ -83,10 +83,28 @@ HNS RoCE驱动是适配鲲鹏920系列处理器板载网卡RoCE控制器的驱�
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                      SUBJECT                       | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :------------------------------------------------: | :-----------------------------: |
-  | dd74282df573 | RDMA/hns: Initialize the PCI device for hip08 RoCE |                Y                |
-  
+  |   COMMITID   |                      SUBJECT                       |
+  | :----------: | :------------------------------------------------: |
+  | dd74282df573 | RDMA/hns: Initialize the PCI device for hip08 RoCE |
+
+- **重要bugfix**
+
+  linux 主线合入信息
+
+  |   COMMITID   |                           SUBJECT                            |      TAG       |
+  | :----------: | :----------------------------------------------------------: | :------------: |
+  | cb06b6b3f6cb | [RDMA/core: Get IB width and speed from netdev](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cb06b6b3f6cb) | kernel 6.6-rc1 |
+  | df1bcf90a66a | [RDMA/hns: Fix port active speed](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df1bcf90a66a) | kernel 6.6-rc1 |
+  | 7243396aaf12 | [RDMA/hns: Add a max length of gid table](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7243396aaf12) | kernel 6.8-rc1 |
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     |                 SUBJECT                  |
+  | ------------ | :--------------------------------------: |
+  | 729ff7ab6996 | RDMA/core: Add support more netdev speed |
+  | 48a799947374 |     RDMA/hns: Fix port active speed      |
+  | 5c0a1aea9746 | RDMA/hns: Add a max length of gid table  |
+
 ### 特性2: 支持 PD 管理
 
 - **特性详解**
@@ -112,9 +130,17 @@ HNS RoCE驱动是适配鲲鹏920系列处理器板载网卡RoCE控制器的驱�
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                       SUBJECT                       | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :-------------------------------------------------: | :-----------------------------: |
-  | 3a63c964eaa1 | RDMA/hns: Update some attributes of the RoCE device |                Y                |
+  |   COMMITID   |                       SUBJECT                       |
+  | :----------: | :-------------------------------------------------: |
+  | 3a63c964eaa1 | RDMA/hns: Update some attributes of the RoCE device |
+
+- **用户态重要bugfix**
+
+  openEuler/rdma-core
+
+  | SUBJECT                                         | TAG      |
+  | ----------------------------------------------- | -------- |
+  | libhns: Fix parent domain unsupported comp mask | v41.0-23 |
 
 ### 特性3: 支持 MR 管理
 
@@ -145,17 +171,17 @@ RDMA的所有工作请求都基于MR(Memory Region)完成，每个MR都需要与
   | :----------: | :----------------------------------------------------------: | :------------: |
   | 9a4435375cd1 | [IB/hns: Add driver files for hns RoCE driver](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9a4435375cd1) | kernel 4.9-rc1 |
 
-  openeuler OLK-5.10 合入信息
+  openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                    SUBJECT                     | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :--------------------------------------------: | :-----------------------------: |
-  | 9a4435375cd1 |  IB/hns: Add driver files for hns RoCE driver  |                Y                |
-  | 9a9fa2f04d16 | RDMA/hns: Fix level-0 addressing for huge page |                Y                |
-  | cf2f2029935c |   RDMA/hns: Support adaptive hopnum for MTR    |                Y                |
-  | cfad301fb303 |  RDMA/hns: Support flexible pagesize for MTR   |                Y                |
-  | 5be3bbe7f0e6 | RDMA/hns: Alloc MTR memory before alloc_mtt()  |                Y                |
-  | 47968dd6159d |     RDMA/hns: Refactor mtr_init_buf_cfg()      |                Y                |
-  | 893026a80118 |        RDMA/hns: Fix PBL page MTR find         |                Y                |
+  |   COMMITID   |                    SUBJECT                     |
+  | :----------: | :--------------------------------------------: |
+  | 9a4435375cd1 |  IB/hns: Add driver files for hns RoCE driver  |
+  | 9a9fa2f04d16 | RDMA/hns: Fix level-0 addressing for huge page |
+  | cf2f2029935c |   RDMA/hns: Support adaptive hopnum for MTR    |
+  | cfad301fb303 |  RDMA/hns: Support flexible pagesize for MTR   |
+  | 5be3bbe7f0e6 | RDMA/hns: Alloc MTR memory before alloc_mtt()  |
+  | 47968dd6159d |     RDMA/hns: Refactor mtr_init_buf_cfg()      |
+  | 893026a80118 |        RDMA/hns: Fix PBL page MTR find         |
 
 - **用户态涉及代码与使能**
 
@@ -167,9 +193,23 @@ RDMA的所有工作请求都基于MR(Memory Region)完成，每个MR都需要与
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |            SUBJECT             | openeuler ENABLED(Y/N) |
-  | :----------: | :----------------------------: | :--------------------: |
-  | 887b78c80224 | libhns: Add initial main frame |           Y            |
+  |   COMMITID   |            SUBJECT             |
+  | :----------: | :----------------------------: |
+  | 887b78c80224 | libhns: Add initial main frame |
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  NA
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     |                           SUBJECT                            |
+  | ------------ | :----------------------------------------------------------: |
+  | 8b0e700ab707 | RDMA/hns: Fix memory leak in free_mr_exit() and free_mr_init() |
+  | 44ce91624cd6 | RDMA/hns: Fix the spin_lock and spin_unlock objects are inconsistent |
+  | ec799ad0f9d3 |            RDMA/hns: Fix Use-After-Free of rsv_qp            |
 
 #### 支持 MR 重注册（Rereg MR）
 
@@ -193,9 +233,9 @@ RDMA的所有工作请求都基于MR(Memory Region)完成，每个MR都需要与
 
   openeuler/rdma 使能信息
 
-  | COMMITID     | SUBJECT                                     | openeuler  ENABLED(Y/N) |
-  | ------------ | ------------------------------------------- | ----------------------- |
-  | d326d54fed3e | libhns: Add rereg mr interface in userspace | Y                       |
+  | COMMITID     | SUBJECT                                     |
+  | ------------ | ------------------------------------------- |
+  | d326d54fed3e | libhns: Add rereg mr interface in userspace |
 
 #### 支持快速注册 MR（FRMR）
 
@@ -225,11 +265,11 @@ RDMA的所有工作请求都基于MR(Memory Region)完成，每个MR都需要与
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                     SUBJECT                      | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------: | :-----------------------------: |
-  | 68a997c5d28c |       RDMA/hns: Add FRMR support for hip08       |                Y                |
-  | 68a997c5d28c |    RDMA/hns: Configure capacity of hns device    |                Y                |
-  | 79352749ea09 | RDMA/hns: Use new interface to write FRMR fields |                Y                |
+  |   COMMITID   |                     SUBJECT                      |
+  | :----------: | :----------------------------------------------: |
+  | 68a997c5d28c |       RDMA/hns: Add FRMR support for hip08       |
+  | 68a997c5d28c |    RDMA/hns: Configure capacity of hns device    |
+  | 79352749ea09 | RDMA/hns: Use new interface to write FRMR fields |
 
 ### 特性4: 支持 CQ 管理
 
@@ -268,18 +308,18 @@ RDMA的所有工作请求都基于MR(Memory Region)完成，每个MR都需要与
 
   openeuler OLK-5.10 使能信息
 
-  | COMMITID     |                          SUBJECT                           | openeuler OLK-5.10 ENABLED(Y/N) |
-  | ------------ | :--------------------------------------------------------: | :-----------------------------: |
-  | 75c994e6943c |    RDMA/hns: Stop doorbell update while qp state error     |                Y                |
-  | 0425e3e6e0c7 |   RDMA/hns: Support flush cqe for hip08 in kernel space    |                Y                |
-  | b53742865e9f |     RDMA/hns: Delayed flush cqe process with workqueue     |                Y                |
-  | 60c3becfd1a1 |           RDMA/hns: Fix sg offset non-zero issue           |                Y                |
-  | 0fc99566f6ee |     RDMA/hns: Use flush framework for the case in aeq      |                Y                |
-  | 1d500a3f452d | RDMA/hns: Remove unnecessary flush operation for workqueue |                Y                |
-  | 66b1000f5715 |      RDMA/hns: Encapsulate flushing CQE as a function      |                Y                |
-  | d3b33dffb51a |   RDMA/hns: Fix memory corruption when allocating XRCDN    |                Y                |
-  | b44fac86ca3d |   RDMA/hns: Add XRC subtype in QPC and XRC type in SRQC    |                Y                |
-  | ae394640bc89 |           RDMA/hns: Add support for XRC on HIP09           |                Y                |
+  | COMMITID     |                          SUBJECT                           |
+  | ------------ | :--------------------------------------------------------: |
+  | 75c994e6943c |    RDMA/hns: Stop doorbell update while qp state error     |
+  | 0425e3e6e0c7 |   RDMA/hns: Support flush cqe for hip08 in kernel space    |
+  | b53742865e9f |     RDMA/hns: Delayed flush cqe process with workqueue     |
+  | 60c3becfd1a1 |           RDMA/hns: Fix sg offset non-zero issue           |
+  | 0fc99566f6ee |     RDMA/hns: Use flush framework for the case in aeq      |
+  | 1d500a3f452d | RDMA/hns: Remove unnecessary flush operation for workqueue |
+  | 66b1000f5715 |      RDMA/hns: Encapsulate flushing CQE as a function      |
+  | d3b33dffb51a |   RDMA/hns: Fix memory corruption when allocating XRCDN    |
+  | b44fac86ca3d |   RDMA/hns: Add XRC subtype in QPC and XRC type in SRQC    |
+  | ae394640bc89 |           RDMA/hns: Add support for XRC on HIP09           |
 
 - **用户态涉及代码与使能**
 
@@ -298,16 +338,33 @@ RDMA的所有工作请求都基于MR(Memory Region)完成，每个MR都需要与
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :--------------------: |
-  | e1726e934574 |      libhns: Support flush cqe for hip08 in user space       |           Y            |
-  | 482eb44bc296 |       libhns: Not process return value of flushing cqe       |           Y            |
-  | 366374ee6372 |   libhns: Update ibvqp->state in hns_roce_u_v2_modify_qp()   |           Y            |
-  | f1a80cc3dfe2 |      libhns: Bugfix for flush cqe in case multi-process      |           Y            |
-  | 4ed874a5cf30 |            libhns: Add support for XRC for HIP09             |           Y            |
-  | 9e3df7578153 |              libhns: Support ibv_create_srq_ex               |           Y            |
-  | 7c3937d93e7a | libhns: Avoid accessing NULL pointer when locking/unlocking CQ |           Y            |
-  | d8596eff4eb4 |         libhns: Add support for creating extended CQ         |           Y            |
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | e1726e934574 |      libhns: Support flush cqe for hip08 in user space       |
+  | 482eb44bc296 |       libhns: Not process return value of flushing cqe       |
+  | 366374ee6372 |   libhns: Update ibvqp->state in hns_roce_u_v2_modify_qp()   |
+  | f1a80cc3dfe2 |      libhns: Bugfix for flush cqe in case multi-process      |
+  | 4ed874a5cf30 |            libhns: Add support for XRC for HIP09             |
+  | 9e3df7578153 |              libhns: Support ibv_create_srq_ex               |
+  | 7c3937d93e7a | libhns: Avoid accessing NULL pointer when locking/unlocking CQ |
+  | d8596eff4eb4 |         libhns: Add support for creating extended CQ         |
+
+
+- ###### **用户态重要bugfix**
+
+  ###### linux/rdma-core
+
+  | SUBJECT                                           | commit id |
+  | ------------------------------------------------- | --------- |
+  | libhns: Fix uninitialized qp attr when flush cqe  | 23c210471 |
+  | libhns: Fix reference to uninitialized cq pointer | e850ebe15 |
+
+  **openEuler/rdma-core**
+
+  | SUBJECT                                           | TAG      |
+  | ------------------------------------------------- | -------- |
+  | libhns: Fix uninitialized qp attr when flush cqe  | v41.0-21 |
+  | libhns: Fix reference to uninitialized cq pointer | v41.0-14 |
 
 ### 特性5: 支持 QP 管理
 
@@ -346,17 +403,17 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10使能信息
 
-  |   COMMITID   |                           SUBJECT                           | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :---------------------------------------------------------: | :-----------------------------: |
-  | 926a01dc000d |      RDMA/hns: Add QP operations support for hip08 SoC      |                Y                |
-  | 9a4435375cd1 |        IB/hns: Add driver files for hns RoCE driver         |                Y                |
-  | e6ce4942dbde |      RDMA/hns: Use new SQ doorbell register for HIP09       |                Y                |
-  | c746005b2800 | RDMA/hns: Create QP with selected QPN for bank load balance |                Y                |
-  | 50c11848f7c8 | RDMA/hns: Create CQ with selected CQN for bank load balance |                Y                |
-  | 56fbd51c835f | RDMA/hns: Use mutex instead of spinlock for ida allocation  |                Y                |
-  | bf0eda201116 |             RDMA/hns: Add support for CQ stash              |                Y                |
-  | 78d048bb6136 |             RDMA/hns: Add support for QP stash              |                Y                |
-  | 01d06a58d6d3 |           RDMA/hns: Enable stash feature of HIP09           |                Y                |
+  |   COMMITID   |                           SUBJECT                           |
+  | :----------: | :---------------------------------------------------------: |
+  | 926a01dc000d |      RDMA/hns: Add QP operations support for hip08 SoC      |
+  | 9a4435375cd1 |        IB/hns: Add driver files for hns RoCE driver         |
+  | e6ce4942dbde |      RDMA/hns: Use new SQ doorbell register for HIP09       |
+  | c746005b2800 | RDMA/hns: Create QP with selected QPN for bank load balance |
+  | 50c11848f7c8 | RDMA/hns: Create CQ with selected CQN for bank load balance |
+  | 56fbd51c835f | RDMA/hns: Use mutex instead of spinlock for ida allocation  |
+  | bf0eda201116 |             RDMA/hns: Add support for CQ stash              |
+  | 78d048bb6136 |             RDMA/hns: Add support for QP stash              |
+  | 01d06a58d6d3 |           RDMA/hns: Enable stash feature of HIP09           |
 
 - **用户态涉及代码与使能**
 
@@ -368,10 +425,46 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler/rdma-core 使能信息
 
-  |   COMMITID   |            SUBJECT             | openeuler ENABLED(Y/N) |
-  | :----------: | :----------------------------: | :--------------------: |
-  | 887b78c80224 | libhns: Add initial main frame |           Y            |
+  |   COMMITID   |            SUBJECT             |
+  | :----------: | :----------------------------: |
+  | 887b78c80224 | libhns: Add initial main frame |
 
+- ###### **用户态重要bugfix**
+
+  ###### linux/rdma-core
+
+  | SUBJECT                                                      | COMMITID  |
+  | ------------------------------------------------------------ | --------- |
+  | libhns: Bugfix for wrong timing of modifying ibv_qp state to err | 886cf76ed |
+  | libhns: Remove unnecessary QP checks                         | 4ea9a4f77 |
+
+  **openEuler/rdma-core**
+
+  | SUBJECT                                                      | TAG      |
+  | ------------------------------------------------------------ | -------- |
+  | libhns: Bugfix for wrong timing of modifying ibv_qp state to err | v41.0-22 |
+  | libhns: Support flexible WQE buffer page size                | v41.0-16 |
+  | libhns: Remove unnecessary QP checks                         | v41.0-14 |
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  | COMMITID     | SUBJECT                                                      | TAG            |
+  | ------------ | ------------------------------------------------------------ | -------------- |
+  | 56518a603fd2 | [RDMA/hns: Modify the value of long message loopback slice](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=56518a603fd2) | kernel 6.4-rc1 |
+  | b9989ab3f61e | [RDMA/hns: Remove unnecessary QP type checks](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b9989ab3f61e) | kernel 6.5-rc1 |
+  | b5f9efff101b | [RDMA/hns: Fix signed-unsigned mixed comparisons](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b5f9efff101b) | kernel 6.7-rc1 |
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     |                          SUBJECT                          |
+  | ------------ | :-------------------------------------------------------: |
+  | 64307761e707 | RDMA/hns: Modify the value of long message loopback slice |
+  | 603053b423d0 |      RDMA/hns: Support flexible wqe buffer page size      |
+  | ff8d74900925 |       RDMA/hns: Refactor hns_roce_alloc_ucontext()        |
+  | c475862d7cbd |        RDMA/hns: Remove unnecessary QP type checks        |
+  | 56214b3132dd |      RDMA/hns: Fix signed-unsigned mixed comparisons      |
 
 #### 支持 UD 类型的 QP 
 
@@ -399,15 +492,15 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10使能信息
 
-  |   COMMITID   |                       SUBJECT                       | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :-------------------------------------------------: | :-----------------------------: |
-  | b762bf9b0516 |   RDMA/hns: Add support for configuring GMV table   |                Y                |
-  | 115a32e39d13 |     RDMA/hns: Add support for filling GMV table     |                Y                |
-  | 86d6d8ac4bb3 | RDMA/hns: Fix double free of the pointer to TSQ/TPQ |                Y                |
-  | 98912ee82a0c | RDMA/hns: Add support for QPC in size of 512 Bytes  |                Y                |
-  | 396b71fba124 |    RDMA/hns: Remove the portn field in UD SQ WQE    |                Y                |
-  | 11703ad67174 |   RDMA/hns: Simplify process of filling UD SQ WQE   |                Y                |
-  | 27eee3ced4ba |         RDMA/hns: Add UD support for HIP09          |                Y                |
+  |   COMMITID   |                       SUBJECT                       |
+  | :----------: | :-------------------------------------------------: |
+  | b762bf9b0516 |   RDMA/hns: Add support for configuring GMV table   |
+  | 115a32e39d13 |     RDMA/hns: Add support for filling GMV table     |
+  | 86d6d8ac4bb3 | RDMA/hns: Fix double free of the pointer to TSQ/TPQ |
+  | 98912ee82a0c | RDMA/hns: Add support for QPC in size of 512 Bytes  |
+  | 396b71fba124 |    RDMA/hns: Remove the portn field in UD SQ WQE    |
+  | 11703ad67174 |   RDMA/hns: Simplify process of filling UD SQ WQE   |
+  | 27eee3ced4ba |         RDMA/hns: Add UD support for HIP09          |
 
 - **用户态涉及代码与使能**
 
@@ -430,7 +523,7 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
   | ibv_open_xrcd()、ib_alloc_xrcd_user()    | 创建XRCD |
   | ibv_close_xrcd()、ib_dealloc_xrcd_user() | 销毁XRCD |
 
-- **涉及代码与使能**
+- **内核态涉及代码与使能**
 
   linux 主线合入信息
 
@@ -442,11 +535,11 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10使能信息
 
-  |   COMMITID   |                        SUBJECT                        | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :---------------------------------------------------: | :-----------------------------: |
-  | ae394640bc89 |        RDMA/hns: Add support for XRC on HIP09         |                Y                |
-  | d3b33dffb51a | RDMA/hns: Fix memory corruption when allocating XRCDN |                Y                |
-  | b44fac86ca3d | RDMA/hns: Add XRC subtype in QPC and XRC type in SRQC |                Y                |
+  |   COMMITID   |                        SUBJECT                        |
+  | :----------: | :---------------------------------------------------: |
+  | ae394640bc89 |        RDMA/hns: Add support for XRC on HIP09         |
+  | d3b33dffb51a | RDMA/hns: Fix memory corruption when allocating XRCDN |
+  | b44fac86ca3d | RDMA/hns: Add XRC subtype in QPC and XRC type in SRQC |
 
 ### 特性6: 支持 SRQ 管理
 
@@ -476,18 +569,18 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
   | c7bcb13442e1 | [RDMA/hns: Add SRQ support for hip08 kernel mode](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c7bcb13442e1) | kernel 4.20-rc6 |
   | 5c1f167af112 | [RDMA/hns: Init SRQ table for hip08](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5c1f167af112) | kernel 4.20-rc6 |
   | d16da11992d4 | [RDMA/hns: Eanble SRQ capacity for hip08](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d16da11992d4) | kernel 4.20-rc6 |
-  
+
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                        SUBJECT                        | openeuler  OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :---------------------------------------------------: | :------------------------------: |
-  | 495c24808ce7 | RDMA/hns: Add XRC subtype in QPC and XRC type in SRQC |                Y                 |
-  | d3b33dffb51a | RDMA/hns: Fix memory corruption when allocating XRCDN |                Y                 |
-  | 9d9d4ff78884 |    RDMA/hns: Update the kernel header file of hns     |                Y                 |
-  | 81fce6291d99 |     RDMA/hns: Add SRQ asynchronous event support      |                Y                 |
-  | c7bcb13442e1 |    RDMA/hns: Add SRQ support for hip08 kernel mode    |                Y                 |
-  | 5c1f167af112 |          RDMA/hns: Init SRQ table for hip08           |                Y                 |
-  | d16da11992d4 |        RDMA/hns: Eanble SRQ capacity for hip08        |                Y                 |
+  |   COMMITID   |                        SUBJECT                        |
+  | :----------: | :---------------------------------------------------: |
+  | 495c24808ce7 | RDMA/hns: Add XRC subtype in QPC and XRC type in SRQC |
+  | d3b33dffb51a | RDMA/hns: Fix memory corruption when allocating XRCDN |
+  | 9d9d4ff78884 |    RDMA/hns: Update the kernel header file of hns     |
+  | 81fce6291d99 |     RDMA/hns: Add SRQ asynchronous event support      |
+  | c7bcb13442e1 |    RDMA/hns: Add SRQ support for hip08 kernel mode    |
+  | 5c1f167af112 |          RDMA/hns: Init SRQ table for hip08           |
+  | d16da11992d4 |        RDMA/hns: Eanble SRQ capacity for hip08        |
 
 - **用户态涉及代码与使能**
 
@@ -504,14 +597,30 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                       SUBJECT                        | openeuler  ENABLED(Y/N) |
-  | :----------: | :--------------------------------------------------: | :---------------------: |
-  | 9714b12735b2 |      libhns: Update poll cq for supporting srq       |            Y            |
-  | 4332ae4947bb |       libhns: Add the verb for posting srqwqe        |            Y            |
-  | 49db5b9ac356 |  libhns: Add destroy srq verbs for hip08 user mode   |            Y            |
-  | 03aa74d63dd6 |    libhns: Add query srq verb for hip08 user mode    |            Y            |
-  | 85ce85bb594a |   libhns: Add modify srq verb for hip08 user mode    |            Y            |
-  | 22d53621d9b0 | libhns: Add verb of creating srq for hip08 user mode |            Y            |
+  |   COMMITID   |                       SUBJECT                        |
+  | :----------: | :--------------------------------------------------: |
+  | 9714b12735b2 |      libhns: Update poll cq for supporting srq       |
+  | 4332ae4947bb |       libhns: Add the verb for posting srqwqe        |
+  | 49db5b9ac356 |  libhns: Add destroy srq verbs for hip08 user mode   |
+  | 03aa74d63dd6 |    libhns: Add query srq verb for hip08 user mode    |
+  | 85ce85bb594a |   libhns: Add modify srq verb for hip08 user mode    |
+  | 22d53621d9b0 | libhns: Add verb of creating srq for hip08 user mode |
+
+- **用户态重要bugfix**
+
+  linux/rdma-core
+
+  | SUBJECT                             | COMMITID  |
+  | ----------------------------------- | --------- |
+  | Updata kernel headers               | 6ae92057b |
+  | libhns: Support SRQ record doorbell | 3b1b89720 |
+
+  openEuler/rdma-core
+
+  | SUBJECT                             | TAG     |
+  | ----------------------------------- | ------- |
+  | Updata kernel headers               | 41.0-17 |
+  | libhns: Support SRQ record doorbell | 41.0-17 |
 
 ### 特性7: 支持建链
 
@@ -550,14 +659,14 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                        SUBJECT                         | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------: | :-----------------------------: |
-  | 8320deb88c03 |       RDMA/hns: Add enable judgement for UD vlan       |                Y                |
-  | 944e64093a63 |        RDMA/hns: Add CM of vlan device support         |                Y                |
-  | 6c1f08b347f6 |  RDMA/hns: Assign zero for pkey_index of wc in hip08   |                Y                |
-  | 7bdee4158b37 |   RDMA/hns: Fill sq wqe context of ud type in hip08    |                Y                |
-  | 0fa95a9a7102 | RDMA/hns: Add gsi qp support for modifying qp in hip08 |                Y                |
-  | b66efc932067 |            RDMA/hns: Create gsi qp in hip08            |                Y                |
+  |   COMMITID   |                        SUBJECT                         |
+  | :----------: | :----------------------------------------------------: |
+  | 8320deb88c03 |       RDMA/hns: Add enable judgement for UD vlan       |
+  | 944e64093a63 |        RDMA/hns: Add CM of vlan device support         |
+  | 6c1f08b347f6 |  RDMA/hns: Assign zero for pkey_index of wc in hip08   |
+  | 7bdee4158b37 |   RDMA/hns: Fill sq wqe context of ud type in hip08    |
+  | 0fa95a9a7102 | RDMA/hns: Add gsi qp support for modifying qp in hip08 |
+  | b66efc932067 |            RDMA/hns: Create gsi qp in hip08            |
 
 ### 特性8: 支持多种工作请求
 
@@ -592,14 +701,14 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                          SUBJECT                           | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :--------------------------------------------------------: | :-----------------------------: |
-  | 9a4435375cd1 |        IB/hns: Add driver files for hns RoCE driver        |                Y                |
-  | 84f88185112  |                RDMA/hns: Add atomic support                |                Y                |
-  | ace1c5416b37 |          RDMA/hns: Set access flags of hip08 RoCE          |                Y                |
-  | d9581bf358c0 |           RDMA/hns: Bugfix for atomic operation            |                Y                |
-  | 555adba6b7a5 |     RDMA/hns: Fix a missing check of atomic wr length      |                Y                |
-  | c0f88964aed6 | RDMA/hns: Fix inaccurate error label name in init instance |                Y                |
+  |   COMMITID   |                          SUBJECT                           |
+  | :----------: | :--------------------------------------------------------: |
+  | 9a4435375cd1 |        IB/hns: Add driver files for hns RoCE driver        |
+  | 84f88185112  |                RDMA/hns: Add atomic support                |
+  | ace1c5416b37 |          RDMA/hns: Set access flags of hip08 RoCE          |
+  | d9581bf358c0 |           RDMA/hns: Bugfix for atomic operation            |
+  | 555adba6b7a5 |     RDMA/hns: Fix a missing check of atomic wr length      |
+  | c0f88964aed6 | RDMA/hns: Fix inaccurate error label name in init instance |
 
 - **用户态涉及代码与使能**
 
@@ -615,13 +724,13 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :--------------------: |
-  | 887b78c80224 |                libhns: Add initial main frame                |           Y            |
-  | b8c02c0039c4 |           libhns: Add support for extended atomic            |           Y            |
-  | d92b0f595439 |        libhns: Add atomic support for hip08 user mode        |           Y            |
-  | a95f62b7e42f | libhns: Check number of extended sge when using extended atomic |           Y            |
-  | 22edc93d4d17 |       libhns: Bugfix for atomic operation in user mode       |           Y            |
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 887b78c80224 |                libhns: Add initial main frame                |
+  | b8c02c0039c4 |           libhns: Add support for extended atomic            |
+  | d92b0f595439 |        libhns: Add atomic support for hip08 user mode        |
+  | a95f62b7e42f | libhns: Check number of extended sge when using extended atomic |
+  | 22edc93d4d17 |       libhns: Bugfix for atomic operation in user mode       |
 
 ### 特性9: 支持inline
 
@@ -646,17 +755,17 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
   | 30b707886aeb | [RDMA/hns: Support inline data in extented sge space for RC](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=30b707886aeb) |   kernel 5.10   |
   | 0c5e259b06a8 | [RDMA/hns: Fix incorrect sge nums calculation](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0c5e259b06a8) | kernel 6.2-rc1  |
   | 8eaa6f7d569b | [RDMA/hns: Fix ext_sge num error when post send](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8eaa6f7d569b) | kernel 6.2-rc1  |
-  
+
   openeuler OLK-5.10 使能信息
-  
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | 328d405b3d4c | RDMA/hns: Intercept illegal RDMA operation when use inline data |                Y                |
-  | e8638bded775 |     RDMA/hns: Fix missing assignment of max_inline_data      |                Y                |
-  | 30b707886aeb |  RDMA/hns: Support inline data in extented sge space for RC  |                Y                |
-  | 7f360a7e7771 |        RDMA/hns: Fix ext_sge num error when post send        |                Y                |
-  | 345423493ae7 |            RDMA/hns: Fix the problem of sge nums             |                Y                |
-  
+
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 328d405b3d4c | RDMA/hns: Intercept illegal RDMA operation when use inline data |
+  | e8638bded775 |     RDMA/hns: Fix missing assignment of max_inline_data      |
+  | 30b707886aeb |  RDMA/hns: Support inline data in extented sge space for RC  |
+  | 7f360a7e7771 |        RDMA/hns: Fix ext_sge num error when post send        |
+  | 345423493ae7 |            RDMA/hns: Fix the problem of sge nums             |
+
 - **用户态涉及代码与使能**
 
   linux/rdma 合入信息
@@ -667,9 +776,9 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :--------------------: |
-  | 328d405b3d4c | libhns: Intercept illegal RDMA operation when use inline data |           Y            |
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 328d405b3d4c | libhns: Intercept illegal RDMA operation when use inline data |
 
 #### 支持RQ inline
 
@@ -689,16 +798,15 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
   | :----------: | :----------------------------------------------------------: | :-------------: |
   | 0009c2dbe8a4 | [RDMA/hns: Add rq inline data support for hip08 RoCE](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0009c2dbe8a4) | kernel 4.16-rc1 |
   | 2bb185c68bf4 | [RDMA/hns: Add compatibility handling for only support userspace rq inline](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2bb185c68bf4) | kernel 6.3-rc1  |
-  
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | ecaaf1e26a37 |           RDMA/hns: Add rq inline flags judgement            |                Y                |
-  | 0009c2dbe8a4 |     RDMA/hns: Add rq inline data support for hip08 RoCE      |                Y                |
-  | a77029a8c7e4 | RDMA/hns: Fix the inconsistency between the rq inline bit and the community |                Y                |
-  | c22b4e60d382 |         RDMA/hns: Fix the compatibility flag problem         |                Y                |
+  | COMMITID     | SUBJECT                                                      |
+  | ------------ | ------------------------------------------------------------ |
+  | ecaaf1e26a37 | RDMA/hns: Add rq inline flags judgement                      |
+  | 0009c2dbe8a4 | RDMA/hns: Add rq inline data support for hip08 RoCE          |
+  | a77029a8c7e4 | RDMA/hns: Fix the inconsistency between the rq inline bit and the community |
+  | c22b4e60d382 | RDMA/hns: Fix the compatibility flag problem                 |
 
 - **用户态涉及代码与使能**
 
@@ -711,10 +819,50 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                           SUBJECT                           | openeuler ENABLED(Y/N) |
-  | :----------: | :---------------------------------------------------------: | :--------------------: |
-  | 7011b5aedf78 | libhns: Add rq inline data support for hip08 RoCE user mode |           Y            |
-  | 86188a8810ed |           RDMA/hns: Add rq inline flags judgement           |           Y            |
+  |   COMMITID   |                           SUBJECT                           |
+  | :----------: | :---------------------------------------------------------: |
+  | 7011b5aedf78 | libhns: Add rq inline data support for hip08 RoCE user mode |
+  | 86188a8810ed |           RDMA/hns: Add rq inline flags judgement           |
+
+#### 支持CQE inline
+
+- **特性详解**
+
+  接收端支持将接收到的数据直接写入CQE中上报，从而减少硬件的内存访问，降低系统延迟。支持最大长度为32B的CQE inline能力。
+
+- **软件接口**
+
+  NA
+
+- **内核态涉及代码与使能**
+
+  linux 主线合入信息
+
+  | COMMITID     | SUBJECT                                                      | TAG            |
+  | ------------ | ------------------------------------------------------------ | -------------- |
+  | 1d91855304c2 | [RDMA/hns: Support cqe inline in user space]( https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1d91855304c2 ) | kernel 6.3-rc1 |
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     | SUBJECT                                    |
+  | ------------ | ------------------------------------------ |
+  | b3b7a525b076 | RDMA/hns: Support cqe inline in user space |
+
+- **用户态涉及代码与使能**
+
+  linux/rdma 主线合入信息
+
+  | COMMITID  |          SUBJECT           |
+  | :-------: | :------------------------: |
+  | 8c71685d8 |   Update kernel headers    |
+  | 22cd430c6 | libhns: Support cqe inline |
+
+  openeuler/rdma 使能信息
+
+  |          SUBJECT           |   TAG   |
+  | :------------------------: | :-----: |
+  |   Update kernel headers    | v41.0-3 |
+  | libhns: Support cqe inline | v41.0-3 |
 
 ### 特性10: 支持超时重传配置
 
@@ -740,11 +888,11 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                          SUBJECT                           | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :--------------------------------------------------------: | :-----------------------------: |
-  | 0e40dc2f70cd |      RDMA/hns: Add timer allocation support for hip08      |                Y                |
-  | 441c88d5b3ff | RDMA/hns: Fix cmdq parameter of querying pf timer resource |                Y                |
-  | 887803db866a |      RDMA/hns: Bugfix for qpc/cqc timer configuration      |                Y                |
+  |   COMMITID   |                          SUBJECT                           |
+  | :----------: | :--------------------------------------------------------: |
+  | 0e40dc2f70cd |      RDMA/hns: Add timer allocation support for hip08      |
+  | 441c88d5b3ff | RDMA/hns: Fix cmdq parameter of querying pf timer resource |
+  | 887803db866a |      RDMA/hns: Bugfix for qpc/cqc timer configuration      |
 
 ### 特性11: 支持地址管理
 
@@ -775,12 +923,12 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                       SUBJECT                       | openeuler OLK-5.10 ENABLE（Y/N） |
-  | :----------: | :-------------------------------------------------: | :------------------------------: |
-  | b762bf9b0516 |   RDMA/hns: Add support for configuring GMV table   |                Y                 |
-  | 115a32e39d13 |     RDMA/hns: Add support for filling GMV table     |                Y                 |
-  | 86d6d8ac4bb3 | RDMA/hns: Fix double free of the pointer to TSQ/TPQ |                Y                 |
-  | 481cd35130bc |            RDMA/hns: Only record vlan in            |                Y                 |
+  |   COMMITID   |                       SUBJECT                       |
+  | :----------: | :-------------------------------------------------: |
+  | b762bf9b0516 |   RDMA/hns: Add support for configuring GMV table   |
+  | 115a32e39d13 |     RDMA/hns: Add support for filling GMV table     |
+  | 86d6d8ac4bb3 | RDMA/hns: Fix double free of the pointer to TSQ/TPQ |
+  | 481cd35130bc |            RDMA/hns: Only record vlan in            |
 
 - **用户态涉及代码与使能**
 
@@ -792,9 +940,11 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                        SUBJECT                         | openeuler ENABLED（Y/N） |
-  | :----------: | :----------------------------------------------------: | :----------------------: |
-  | 63b8f309c6af | libhns: Add verbs of querying device and querying port |            Y             |
+  |   COMMITID   |                        SUBJECT                         |
+  | :----------: | :----------------------------------------------------: |
+  | 63b8f309c6af | libhns: Add verbs of querying device and querying port |
+
+
 
 #### 支持目的地址管理
 
@@ -811,10 +961,40 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
   | ibv_modify_qp()                                 | 支持通过modify QP参数ah_attr设置AH |
   | ibv_create_ah()                                 | 创建AH                             |
   | ibv_create_ah_from_wc()、ib_create_ah_from_wc() | 从WC中读取地址信息，创建或初始化AH |
-  
+
 - **内核态涉及代码与使能**
 
   参考支持源地址管理和查询。
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  | COMMITID     | SUBJECT                                                      | TAG            |
+  | ------------ | ------------------------------------------------------------ | -------------- |
+  | d3f4020a213e | [RDMA/hns: Response dmac to userspace](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d3f4020a213e) | kernel 6.8-rc1 |
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     |               SUBJECT                |
+  | ------------ | :----------------------------------: |
+  | 6f3b60e0eb4b | RDMA/hns: Response dmac to userspace |
+
+- 用户态重要bugfix
+
+  linux/rdma-core
+
+  | SUBJECT                             | COMMITID  |
+  | ----------------------------------- | --------- |
+  | Update kernel headers               | 4a2b06403 |
+  | libhns: Get dmac from kernel driver | bf49669f1 |
+
+  openEuler/rdma-core
+
+  | SUBJECT                             | TAG      |
+  | ----------------------------------- | -------- |
+  | Update kernel headers               | v41.0-20 |
+  | libhns: Get dmac from kernel driver | v41.0-20 |
 
 #### 支持VLAN
 
@@ -879,11 +1059,28 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                      SUBJECT                      | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :-----------------------------------------------: | :-----------------------------: |
-  | 247fc16d734d | RDMA/hns: Add support for EQE in size of 64 Bytes |                Y                |
+  |   COMMITID   |                      SUBJECT                      |
+  | :----------: | :-----------------------------------------------: |
+  | 247fc16d734d | RDMA/hns: Add support for EQE in size of 64 Bytes |
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  | COMMITID     | SUBJECT                                                      | TAG            |
+  | ------------ | ------------------------------------------------------------ | -------------- |
+  | 9faef73ef4f6 | [RDMA/hns: Fix printing level of asynchronous events](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9faef73ef4f6) | kernel 6.7-rc1 |
+  | 95f6b40082aa | [RDMA/hns: Rename the interrupts](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=95f6b40082aa) | kernel 6.8-rc1 |
+
+  openeuler OLK-5.10使能信息
+
+  | COMMITID     |                       SUBJECT                       |
+  | ------------ | :-------------------------------------------------: |
+  | 497a544065a3 | RDMA/hns: Fix printing level of asynchronous events |
+  | 091b3a75cbc8 |           RDMA/hns: Rename the interrupts           |
 
 #### 支持完成事件上报
+
 - **特性详解**
 
   支持配置/使用RDMA 事件模式，支持完成事件上报功能。
@@ -902,9 +1099,9 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                   SUBJECT                    | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :------------------------------------------: | :-----------------------------: |
-  | 9a4435375cd1 | IB/hns: Add driver files for hns RoCE driver |                Y                |
+  |   COMMITID   |                   SUBJECT                    |
+  | :----------: | :------------------------------------------: |
+  | 9a4435375cd1 | IB/hns: Add driver files for hns RoCE driver |
 #### 支持异步事件上报
 
 - **特性详解**
@@ -974,11 +1171,11 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
 
   openeuler OLK-5.10使能信息
 
-  |   COMMITID   |                         SUBJECT                          | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :------------------------------------------------------: | :-----------------------------: |
-  | 9a4435375cd1 |       IB/hns: Add driver files for hns RoCE driver       |                Y                |
-  | c7cf81b52c02 | RDMA/hns: Add support for sending port down event fastly |                Y                |
-  | 5d705e82752a |        RDMA/hns: Deliver net device event to ofed        |                Y                |
+  |   COMMITID   |                         SUBJECT                          |
+  | :----------: | :------------------------------------------------------: |
+  | 9a4435375cd1 |       IB/hns: Add driver files for hns RoCE driver       |
+  | c7cf81b52c02 | RDMA/hns: Add support for sending port down event fastly |
+  | 5d705e82752a |        RDMA/hns: Deliver net device event to ofed        |
 
 ### 特性13: 支持QoS
 
@@ -1033,7 +1230,7 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
      1. DSCP（tclass）仅支持RoCE v2协议；
      2. VLAN.pri(SL)与DSCP(tclass)同时使用时，调度优先级以VLAN.pri为准。报文中会同时带有VLAN.pri和DSCP；
      3. 不支持带流量更改SL与TC的映射关系，不支持带流更改DSCP与SL的映射关系。
-  
+
 - **内核态涉及代码与使能**
 
   linux 主线合入信息
@@ -1042,23 +1239,37 @@ HNS RoCE支持单芯片1M个QP，支持最大32K的WR（Work Request）下发，
   | :----------: | :----------------------------------------------------------: | :-------------: |
   | cacde272dd00 | [net: hns3: Add hclge_dcb module for the support of DCB feature](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=linux-5.10.y&id=cacde272dd00) | kernel 4.15-rc1 |
   | fba429fcf9a5 | [RDMA/hns: Fix missing fields in address vector](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fba429fcf9a5) |   kernel 5.11   |
-  
+
   openeuler OLK-5.10 使能信息
-  
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | cacde272dd00 | net: hns3: Add hclge_dcb module for the support of DCB feature |                Y                |
-  | 6d67845961fe |        RDMA/hns: Fix missing fields in address vector        |                Y                |
-  | 11ef2ec6aa7c |             RDMA/hns: Support DSCP of userspace              |                Y                |
-  
+
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | cacde272dd00 | net: hns3: Add hclge_dcb module for the support of DCB feature |
+  | 6d67845961fe |        RDMA/hns: Fix missing fields in address vector        |
+  | 11ef2ec6aa7c |             RDMA/hns: Support DSCP of userspace              |
+
 - **用户态涉及代码与使能**
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |        SUBJECT        | openeuler ENABLED(Y/N) |
-  | :----------: | :-------------------: | :--------------------: |
-  | 12d2a17d404e | Update kernel headers |           Y            |
-  | b88e6ae3e144 | libhns: Support DSCP  |           Y            |
+  |   COMMITID   |        SUBJECT        |
+  | :----------: | :-------------------: |
+  | 12d2a17d404e | Update kernel headers |
+  | b88e6ae3e144 | libhns: Support DSCP  |
+
+- **内核态重要bugfix**
+
+  linux主线合入信息
+
+  | COMMITID     | SUBJECT                                                      | TAG            |
+  | ------------ | ------------------------------------------------------------ | -------------- |
+  | 5e617c18b1f3 | [RDMA/hns: Add check for SL](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5e617c18b1f3) | kernel 6.7-rc1 |
+
+  openeuler OLK-5.10使能信息
+
+  | COMMITID     |                     SUBJECT                     |
+  | ------------ | :---------------------------------------------: |
+  | ebccb56b18db | RDMA/hns: Fix a missing validation check for sl |
 
 ### 特性14: 支持拥塞控制
 
@@ -1091,7 +1302,7 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
      
      struct ibv_qp *hnsdv_create_qp(struct ibv_context *context,
      			       struct ibv_qp_init_attr_ex *qp_attr,
-   			       struct hnsdv_qp_init_attr *hns_qp_attr);
+         		       struct hnsdv_qp_init_attr *hns_qp_attr);
      
      enum hnsdv_qp_congest_ctrl_type {
         	HNSDV_QP_CREATE_ENABLE_DCQCN = 1 << 0,
@@ -1108,7 +1319,7 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
      ```
      
   2. 静态配置
-  
+
      在BIOS选项中选择0（DCQCN）、1（LDCP）、2（HC3）、3（DIP）来配置固定算法。 
 
 - **内核态涉及代码与使能**
@@ -1121,28 +1332,47 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
   | 6a157f7d1b14 | [RDMA/hns: Add SCC context allocation support for hip08](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6a157f7d1b14) | kernel 5.1-rc1 |
   | 6ac16e403900 | [RDMA/hns: Bugfix for set hem of SCC](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6ac16e403900) | kernel 5.1-rc7 |
   | 00fb67ec6b98 | [RDMA/hns: Bugfix for SCC hem free](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=00fb67ec6b98) | kernel 5.2-rc1 |
-  | faa63656fc36 | [RDMA/hns: Add new command to support query vf caps](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=faa63656fc36) | kernel 6.4-rc1 |
 
   openeuler OLK-5.10使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | aa84fa18741b |       RDMA/hns: Add SCC context clr support for hip08        |                Y                |
-  | 6a157f7d1b14 |    RDMA/hns: Add SCC context allocation support for hip08    |                Y                |
-  | 6ac16e403900 |             RDMA/hns: Bugfix for set hem of SCC              |                Y                |
-  | 00fb67ec6b98 |              RDMA/hns: Bugfix for SCC hem free               |                Y                |
-  | 1890b7dda6ba |      RDMA/hns: Add new command to support query vf caps      |                Y                |
-  | 87d0ab38d4f0 |           RDMA/hns: Modify congestion abbreviation           |                Y                |
-  | 09f1b7cb29b2 | RDMA/hns: Support congestion control algorithm configuration at QP granularity |                Y                |
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | aa84fa18741b |       RDMA/hns: Add SCC context clr support for hip08        |
+  | 6a157f7d1b14 |    RDMA/hns: Add SCC context allocation support for hip08    |
+  | 6ac16e403900 |             RDMA/hns: Bugfix for set hem of SCC              |
+  | 00fb67ec6b98 |              RDMA/hns: Bugfix for SCC hem free               |
+  | 87d0ab38d4f0 |           RDMA/hns: Modify congestion abbreviation           |
+  | 09f1b7cb29b2 | RDMA/hns: Support congestion control algorithm configuration at QP granularity |
 
 - **用户态涉及代码与使能**
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                          SUBJECT                           | openeuler ENABLED(Y/N) |
-  | :----------: | :--------------------------------------------------------: | :--------------------: |
-  | 39c7b8eaeb3a |                   Update kernel headers                    |           Y            |
-  | 1b3ec79e4d61 | libhns: Support congestion control algorithm configuration |           Y            |
+  |   COMMITID   |                          SUBJECT                           |
+  | :----------: | :--------------------------------------------------------: |
+  | 39c7b8eaeb3a |                   Update kernel headers                    |
+  | 1b3ec79e4d61 | libhns: Support congestion control algorithm configuration |
+
+- **用户态重要bugfix**
+
+  openEuler/rdma-core
+
+  | SUBJECT                                                    | TAG      |
+  | ---------------------------------------------------------- | -------- |
+  | libhns: Add input parameter check for hnsdv_query_device() | v41.0-21 |
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  NA
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     |                           SUBJECT                            |
+  | ------------ | :----------------------------------------------------------: |
+  | dadff1bccb45 |      RDMA/hns: Fix incorrect congest type configuration      |
+  | d2fd42152664 | RDMA/hns: Fix a missing default value for invalid congest type |
 
 #### 支持拥塞控制算法模板参数配置
 
@@ -1195,13 +1425,25 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
 
   注：UINT_MAX表示整形最大数值
 
+- **内核态涉及代码与使能**
+
+  linux 主线合入信息
+
+  NA
+
+  openeuler OLK-5.10 是能信息
+
+  | COMMITID     |                           SUBJECT                            |
+  | ------------ | :----------------------------------------------------------: |
+  | 523f34d81ea7 | RDMA/hns: Support congestion control algorithm parameter configuration |
+
 - **用户态涉及代码与使能**
 
   openeuler/rdma 使能信息
 
-  | COMMITID |                          SUBJECT                           | openeuler ENABLED(Y/N) |
-  | :------: | :--------------------------------------------------------: | :--------------------: |
-  | 48ccef6  | libhns: Support congestion control algorithm configuration |           Y            |
+  | COMMITID |                          SUBJECT                           |
+  | :------: | :--------------------------------------------------------: |
+  | 48ccef6  | libhns: Support congestion control algorithm configuration |
 
 ### 特性15: 支持Bonding
 
@@ -1252,30 +1494,55 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
 
   openeuler OLK-5.10 使能信息
 
-  | COMMITID     | SUBJECT                                                      | openeuler OLK-5.10 ENABLED(Y/N) |
-  | ------------ | ------------------------------------------------------------ | :-----------------------------: |
-  | e62a20278f18 | RDMA/hns: support RoCE bonding                               |                Y                |
-  | 646b97dbb8dc | RDMA/hns: adjust the structure of RoCE bonding driver        |                Y                |
-  | 6ba084e0f031 | RDMA/hns: add constraints for bonding-unsupported situations |                Y                |
-  | b6623fd2c6dc | RDMA/hns: fix possible dead lock when setting RoCE Bonding   |                Y                |
-  | 4920275aafcb | RDMA/hns: fix the error of missing GID in RoCE bonding mode 1 |                Y                |
-  | a1598d8616e7 | RDMA/hns: fix the error of RoCE VF based on RoCE Bonding PF  |                Y                |
-  | 8aeaa67170fe | RDMA/hns: Move bond_work from hns_roce_dev to hns_roce_bond_group |                Y                |
-  | 82ee5d30a22d | RDMA/hns: Apply XArray for Bond ID allocation                |                Y                |
-  | 41adb38e9111 | RDMA/hns: Delete a useless assignment to bond_state          |                Y                |
-  | 960644465622 | RDMA/hns: Initial value assignment cleanup for RoCE Bonding variables |                Y                |
-  | 9003ac2aa412 | RDMA/hns: Remove the struct member 'bond_grp' from hns_roce_dev |                Y                |
-  | bc80b7288d5c | RDMA/hns: Simplify the slave uninit logic of RoCE bonding operations |                Y                |
-  | 8d3ee0ae6b33 | RDMA/hns: Fix the driver uninit order during bond setting    |                Y                |
-  | 01c810c8b67f | RDMA/hns: Fix the counting error of slave number             |                Y                |
-  | b0f80ad22f96 | RDMA/hns: Support reset recovery for RoCE bonding            |                Y                |
-  | e4ad37eabbdb | RDMA/hns: Get real-time port state of bonding slave          |                Y                |
-  | c65db67aed44 | RDMA/hns: Set IB port state depending on upper device for RoCE bonding |                Y                |
-  | 49f27d3e0831 | RDMA/hns: Support dispatching IB event for RoCE bonding      |                Y                |
-  | a37994ad169d | RDMA/hns: Fix a missing constraint for slave num in RoCE Bonding |                Y                |
-  | b5db302586ab | RDMA/hns: Rename hns_roce_bond_info_record() to make sense   |                Y                |
-  | 483ccd4400f6 | RDMA/hns: Fix the repetitive workqueue mission in RoCE Bonding |                Y                |
-  | ab97048c4804 | RDMA/hns: Fix the counting error of bonding with more than 2 slaves |                Y                |
+  | COMMITID     | SUBJECT                                                      |
+  | ------------ | ------------------------------------------------------------ |
+  | e62a20278f18 | RDMA/hns: support RoCE bonding                               |
+  | 646b97dbb8dc | RDMA/hns: adjust the structure of RoCE bonding driver        |
+  | 6ba084e0f031 | RDMA/hns: add constraints for bonding-unsupported situations |
+  | b6623fd2c6dc | RDMA/hns: fix possible dead lock when setting RoCE Bonding   |
+  | 4920275aafcb | RDMA/hns: fix the error of missing GID in RoCE bonding mode 1 |
+  | a1598d8616e7 | RDMA/hns: fix the error of RoCE VF based on RoCE Bonding PF  |
+  | 8aeaa67170fe | RDMA/hns: Move bond_work from hns_roce_dev to hns_roce_bond_group |
+  | 82ee5d30a22d | RDMA/hns: Apply XArray for Bond ID allocation                |
+  | 41adb38e9111 | RDMA/hns: Delete a useless assignment to bond_state          |
+  | 960644465622 | RDMA/hns: Initial value assignment cleanup for RoCE Bonding variables |
+  | 9003ac2aa412 | RDMA/hns: Remove the struct member 'bond_grp' from hns_roce_dev |
+  | bc80b7288d5c | RDMA/hns: Simplify the slave uninit logic of RoCE bonding operations |
+  | 8d3ee0ae6b33 | RDMA/hns: Fix the driver uninit order during bond setting    |
+  | 01c810c8b67f | RDMA/hns: Fix the counting error of slave number             |
+  | b0f80ad22f96 | RDMA/hns: Support reset recovery for RoCE bonding            |
+  | e4ad37eabbdb | RDMA/hns: Get real-time port state of bonding slave          |
+  | c65db67aed44 | RDMA/hns: Set IB port state depending on upper device for RoCE bonding |
+  | 49f27d3e0831 | RDMA/hns: Support dispatching IB event for RoCE bonding      |
+  | a37994ad169d | RDMA/hns: Fix a missing constraint for slave num in RoCE Bonding |
+  | b5db302586ab | RDMA/hns: Rename hns_roce_bond_info_record() to make sense   |
+  | 483ccd4400f6 | RDMA/hns: Fix the repetitive workqueue mission in RoCE Bonding |
+  | ab97048c4804 | RDMA/hns: Fix the counting error of bonding with more than 2 slaves |
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  NA
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     |                           SUBJECT                            |
+  | ------------ | :----------------------------------------------------------: |
+  | ef71d472e4a4 |       RDMA/hns: Fix a missing kfree() to hr_dev->priv        |
+  | c0f88964aed6 |  RDMA/hns: Fix inaccurate error label name in init instance  |
+  | bbe165da7807 | RDMA/hns: Fix missing cleanup when bond_grp becomes invalid  |
+  | 007ae19975f5 | RDMA/hns: Fix the device loss after unbinding RoCE bond resource slave |
+  | 79c470b1c348 | RDMA/hns: Fix wild pointer error of RoCE bonding when rmmod hns3 |
+  | 71c7611c1224 | RDMA/hns: Add functions to obtain netdev and bus_num from an hr_dev |
+  | ff235b9c62bb |   RDMA/hns: Fix a memory leak error when bond clear failed   |
+  | b927e3066992 | RDMA/hns: Fix the concurrency error between bond and reset.  |
+  | 991fd7d3bc75 |     RDMA/hns: Fix several memory issues in roce bonding      |
+  | f6916e6d7bba | RDMA/hns: Fix incorrect bond clear during slave increase event |
+  | 4c5c787523a4 |    RDMA/hns: Fix init check of VFs on RoCE bonding slaves    |
+  | 8344817b5fbc |          RDMA/hns: Fix incorrect print type in bond          |
+  | d51ce28bca67 |    RDMA/hns: Add more check for bonding-unsupported cases    |
+  | 52fe3e912417 |    RDMA/hns: Improve readability of check_bond_support()     |
 
 
 ### 特性16: 支持 SRIOV 虚拟化
@@ -1305,25 +1572,27 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
 
   linux 主线合入信息
 
-  |   COMMITID   |                           SUBJECT                            |     TAG     |
-  | :----------: | :----------------------------------------------------------: | :---------: |
-  | 0b567cde9d7a | [RDMA/hns: Enable RoCE on virtual functions](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0b567cde9d7a) | kernel 5.13 |
-  | accfc1affe9e | [RDMA/hns: Set parameters of all the functions belong to a PF](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=accfc1affe9e) | kernel 5.13 |
-  | 5b03a4226c42 | [RDMA/hns: Query the number of functions supported by the PF](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b03a4226c42) | kernel 5.13 |
-  | 719d13415f59 | [RDMA/hns: Remove duplicated hem page size config code](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=719d13415f59) | kernel 5.13 |
-  | 2a424e1d112a | [RDMA/hns: Reserve the resource for the VFs](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a424e1d112a) | kernel 5.13 |
-  | 0fb46da051ae | [RDMA/hns: Simplify function's resource related command](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0fb46da051ae) | kernel 5.13 |
+  |   COMMITID   |                           SUBJECT                            |      TAG       |
+  | :----------: | :----------------------------------------------------------: | :------------: |
+  | 0b567cde9d7a | [RDMA/hns: Enable RoCE on virtual functions](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0b567cde9d7a) |  kernel 5.13   |
+  | accfc1affe9e | [RDMA/hns: Set parameters of all the functions belong to a PF](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=accfc1affe9e) |  kernel 5.13   |
+  | 5b03a4226c42 | [RDMA/hns: Query the number of functions supported by the PF](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b03a4226c42) |  kernel 5.13   |
+  | 719d13415f59 | [RDMA/hns: Remove duplicated hem page size config code](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=719d13415f59) |  kernel 5.13   |
+  | 2a424e1d112a | [RDMA/hns: Reserve the resource for the VFs](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a424e1d112a) |  kernel 5.13   |
+  | 0fb46da051ae | [RDMA/hns: Simplify function's resource related command](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0fb46da051ae) |  kernel 5.13   |
+  | faa63656fc36 | [RDMA/hns: Add new command to support query vf caps](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=faa63656fc36) | kernel 6.4-rc1 |
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | 95d776135a46 |          RDMA/hns: Enable RoCE on virtual functions          |                Y                |
-  | 66274aac3d95 | RDMA/hns: Set parameters of all the functions belong to a PF |                Y                |
-  | 243bdeb15f32 | RDMA/hns: Query the number of functions supported by the PF  |                Y                |
-  | 0abc8a80ce09 |    RDMA/hns: Remove duplicated hem page size config code     |                Y                |
-  | 74e1531c3e24 |          RDMA/hns: Reserve the resource for the VFs          |                Y                |
-  | 22d226239a08 |    RDMA/hns: Simplify function's resource related command    |                Y                |
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 95d776135a46 |          RDMA/hns: Enable RoCE on virtual functions          |
+  | 66274aac3d95 | RDMA/hns: Set parameters of all the functions belong to a PF |
+  | 243bdeb15f32 | RDMA/hns: Query the number of functions supported by the PF  |
+  | 0abc8a80ce09 |    RDMA/hns: Remove duplicated hem page size config code     |
+  | 74e1531c3e24 |          RDMA/hns: Reserve the resource for the VFs          |
+  | 22d226239a08 |    RDMA/hns: Simplify function's resource related command    |
+  | 1890b7dda6ba |      RDMA/hns: Add new command to support query vf caps      |
 
 ### 特性17: 支持复位
 
@@ -1368,15 +1637,36 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | 89a6da3cb8f3 |        RDMA/hns: reset function when removing module         |                Y                |
-  | 22d226239a08 |    RDMA/hns: Simplify function's resource related command    |                Y                |
-  | 243bdeb15f32 | RDMA/hns: Query the number of functions supported by the PF  |                Y                |
-  | 74e1531c3e24 |          RDMA/hns: Reserve the resource for the VFs          |                Y                |
-  | 66274aac3d95 | RDMA/hns: Set parameters of all the functions belong to a PF |                Y                |
-  | 95d776135a46 |          RDMA/hns: Enable RoCE on virtual functions          |                Y                |
-  | 0abc8a80ce09 |    RDMA/hns: Remove duplicated hem page size config code     |                Y                |
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 89a6da3cb8f3 |        RDMA/hns: reset function when removing module         |
+  | 22d226239a08 |    RDMA/hns: Simplify function's resource related command    |
+  | 243bdeb15f32 | RDMA/hns: Query the number of functions supported by the PF  |
+  | 74e1531c3e24 |          RDMA/hns: Reserve the resource for the VFs          |
+  | 66274aac3d95 | RDMA/hns: Set parameters of all the functions belong to a PF |
+  | 95d776135a46 |          RDMA/hns: Enable RoCE on virtual functions          |
+  | 0abc8a80ce09 |    RDMA/hns: Remove duplicated hem page size config code     |
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  NA
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     |                           SUBJECT                            |
+  | ------------ | :----------------------------------------------------------: |
+  | d08f90ea3312 | RDMA/hns: Fix missing reset notification by user space driver |
+  | 431c875e4b02 | RDMA/hns: Fix simultaneous reset and resource deregistration |
+
+- **用户态重要bugfix**
+
+  | SUBJECT                                            | TAG      |
+  | -------------------------------------------------- | -------- |
+  | libhns: Fix missing reset notification             | v41.0-15 |
+  | libhns: return error when post send in reset state | v41.0-15 |
+
 
 ### 特性18: 支持RAS
 
@@ -1407,22 +1697,22 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
   | 726be12f5ca0 | [RDMA/hns: Set reset flag when hw resetting](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=726be12f5ca0) | kernel 5.3-rc1  |
   | 2de949abd6a5 | [RDMA/hns: Recover 1bit-ECC error of RAM on chip](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2de949abd6a5) | kernel 6.0-rc1  |
   | e8ea058edc2b | [RDMA/hns: Add the detection for CMDQ status in the device initialization process](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e8ea058edc2b) |   kernel 5.18   |
-  
+
   openeuler OLK-5.10 使能信息
-  
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | 626903e9355b |   RDMA/hns: Add support for reporting wc as software mode    |                Y                |
-  | d3743fa94ccd | RDMA/hns: Fix the chip hanging caused by sending doorbell during reset |                Y                |
-  | 6a04aed6afae | RDMA/hns: Fix the chip hanging caused by sending mailbox&CMQ during reset |                Y                |
-  | d061effc36f7 | RDMA/hns: Fix the Oops during rmmod or insmod ko when reset occurs |                Y                |
-  | 2b9acb9a97fe |     RDMA/hns: Add the process of AEQ overflow for hip08      |                Y                |
-  | cb7a94c9c808 |        RDMA/hns: Add reset process for RoCE in hip08         |                Y                |
-  | 3ec5f54f7a0f |       RDMA/hns: Fix an cmd queue issue when resetting        |                Y                |
-  | e075da5e7c47 |        RDMA/hns: Add reset process for function-clear        |                Y                |
-  | 726be12f5ca0 |          RDMA/hns: Set reset flag when hw resetting          |                Y                |
-  | 1a8c6fa4adfb |       RDMA/hns: Recover 1bit-ECC error of RAM on chip        |                Y                |
-  | 34e27e3f9408 | RDMA/hns: Add the detection for CMDQ status in the device initialization process |                Y                |
+
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 626903e9355b |   RDMA/hns: Add support for reporting wc as software mode    |
+  | d3743fa94ccd | RDMA/hns: Fix the chip hanging caused by sending doorbell during reset |
+  | 6a04aed6afae | RDMA/hns: Fix the chip hanging caused by sending mailbox&CMQ during reset |
+  | d061effc36f7 | RDMA/hns: Fix the Oops during rmmod or insmod ko when reset occurs |
+  | 2b9acb9a97fe |     RDMA/hns: Add the process of AEQ overflow for hip08      |
+  | cb7a94c9c808 |        RDMA/hns: Add reset process for RoCE in hip08         |
+  | 3ec5f54f7a0f |       RDMA/hns: Fix an cmd queue issue when resetting        |
+  | e075da5e7c47 |        RDMA/hns: Add reset process for function-clear        |
+  | 726be12f5ca0 |          RDMA/hns: Set reset flag when hw resetting          |
+  | 1a8c6fa4adfb |       RDMA/hns: Recover 1bit-ECC error of RAM on chip        |
+  | 34e27e3f9408 | RDMA/hns: Add the detection for CMDQ status in the device initialization process |
 
 
 ### 特性19: 支持IOPMU
@@ -1502,10 +1792,12 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
   rdma link show [DEV/PORT_INDEX]
   #查询软/硬件统计信息
   rdma stat show link [ DEV/PORT_INDEX ] -p
+  #查询scc context 信息
+  rdma res show qp -jpr
   ```
-  
-  注意：资源的context信息以及软硬件统计信息目前仅支持openeuler 22.03 SP2版本。
-  
+
+  注意：资源的context信息以及软硬件统计信息目前仅支持openeuler 22.03 SP2及以后版本。
+
 - **内核态涉及代码与使能**
 
   linux 主线合入信息
@@ -1523,18 +1815,19 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                          SUBJECT                          | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :-------------------------------------------------------: | :-----------------------------: |
-  | e1c9a0dc2939 |        RDMA/hns: Dump detailed driver-specific CQ         |                Y                |
-  | 9c9edf689a60 | RDMA/hns: Remove redundant DFX file and DFX ops structure |                Y                |
-  | 9dd913cd565c |     RDMA/hns: Add or remove CQ's restrack attributes      |                Y                |
-  | 78163ff31523 |  RDMA/hns: Support CQ's restrack raw ops for hns driver   |                Y                |
-  | 78425b64c781 |    RDMA/hns: Support QP's restrack ops for hns driver     |                Y                |
-  | 0480d2ff2ed6 |  RDMA/hns: Support QP's restrack raw ops for hns driver   |                Y                |
-  | 98b07261a4da |    RDMA/hns: Support MR's restrack ops for hns driver     |                Y                |
-  | 4d20406bc210 |  RDMA/hns: Support MR's restrack raw ops for hns driver   |                Y                |
-  | d5a4ca75e7ca |                RDMA/hns: Add dfx cnt stats                |                Y                |
-  | 05491dda8e9b |              RDMA/hns: Support hns HW stats               |                Y                |
+  |   COMMITID   |                           SUBJECT                           |
+  | :----------: | :---------------------------------------------------------: |
+  | e1c9a0dc2939 |         RDMA/hns: Dump detailed driver-specific CQ          |
+  | 9c9edf689a60 |  RDMA/hns: Remove redundant DFX file and DFX ops structure  |
+  | 9dd913cd565c |      RDMA/hns: Add or remove CQ's restrack attributes       |
+  | 78163ff31523 |   RDMA/hns: Support CQ's restrack raw ops for hns driver    |
+  | 78425b64c781 |     RDMA/hns: Support QP's restrack ops for hns driver      |
+  | 0480d2ff2ed6 |   RDMA/hns: Support QP's restrack raw ops for hns driver    |
+  | 98b07261a4da |     RDMA/hns: Support MR's restrack ops for hns driver      |
+  | 4d20406bc210 |   RDMA/hns: Support MR's restrack raw ops for hns driver    |
+  | d5a4ca75e7ca |                 RDMA/hns: Add dfx cnt stats                 |
+  | 05491dda8e9b |               RDMA/hns: Support hns HW stats                |
+  | 0b24e733b240 | RDMA/hns: Append SCC context to the raw dump of QP Resource |
 
 
 ### 特性22: 支持 DCA
@@ -1663,29 +1956,65 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
 
   openeuler OLK-5.10 使能信息
 
-  |   COMMITID   |                           SUBJECT                            | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :-----------------------------: |
-  | 21a0d4fe7b81 | RDMA/hns: Fixes concurrent ressetting and post_recv in DCA mode |                Y                |
-  | d3caaebdbfe9 | RDMA/hns: Optimize user DCA perfermance by sharing DCA status |                Y                |
-  | d3caaebdbfe9 |            RDMA/hns: Add debugfs support for DCA             |                Y                |
-  | d3caaebdbfe9 |          RDMA/hns: Add DCA support for kernel space          |                Y                |
-  | f0384ddcf1ee |      RDMA/hns: Add method to query WQE buffer's address      |                Y                |
-  | 0273952c5e6e |          RDMA/hns: Add method to detach WQE buffer           |                Y                |
-  | 0cf17392d266 |  RDMA/hns: Setup the configuration of WQE addressing to QPC  |                Y                |
-  | d8cca476a8d2 |        RDMA/hns: Add method for attaching WQE buffer         |                Y                |
-  | 40e4b148b5bd |      RDMA/hns: Configure DCA mode for the userspace QP       |                Y                |
-  | bca9ff271249 |      RDMA/hns: Add method for shrinking DCA memory pool      |                Y                |
-  | f44a2f97d82a |              RDMA/hns: Introduce DCA for RC QP               |                Y                |
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 21a0d4fe7b81 | RDMA/hns: Fixes concurrent ressetting and post_recv in DCA mode |
+  | d3caaebdbfe9 | RDMA/hns: Optimize user DCA perfermance by sharing DCA status |
+  | d3caaebdbfe9 |            RDMA/hns: Add debugfs support for DCA             |
+  | d3caaebdbfe9 |          RDMA/hns: Add DCA support for kernel space          |
+  | f0384ddcf1ee |      RDMA/hns: Add method to query WQE buffer's address      |
+  | 0273952c5e6e |          RDMA/hns: Add method to detach WQE buffer           |
+  | 0cf17392d266 |  RDMA/hns: Setup the configuration of WQE addressing to QPC  |
+  | d8cca476a8d2 |        RDMA/hns: Add method for attaching WQE buffer         |
+  | 40e4b148b5bd |      RDMA/hns: Configure DCA mode for the userspace QP       |
+  | bca9ff271249 |      RDMA/hns: Add method for shrinking DCA memory pool      |
+  | f44a2f97d82a |              RDMA/hns: Introduce DCA for RC QP               |
+
+- **内核态重要bugfix**
+
+  linux 主线合入信息
+
+  NA
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     | SUBJECT                                                      |
+  | ------------ | ------------------------------------------------------------ |
+  | 4fa42930c5f3 | RDMA/hns: Fix sleeping in atomic context during DCA unloading |
+  | 172129db8ecb | RDMA/hns: Fix unregistering device and accessing to debugfs concurrently |
+  | 145ea8d003a2 | RDMA/hns: Fix registering dca debugfs when dca has not been set |
+  | 63a0766e1652 | RDMA/hns: Fix potential NULL pointer in DCA memory query     |
+  | 35c15b48ff2c | RDMA/hns: Fix context dca configuration                      |
+  | bcfafb498f86 | RDMA/hns: Fix a meaningless loop in free_buffer_pages_proc() |
+  | 6fd50c4f1706 | RDMA/hns: Fix sleeping in setup_dca_buf_to_hw()              |
+  | bbf867973d74 | RDMA/hns: Improve readabilties for dca uverbs                |
+  | 9ac2b25be3c6 | RDMA/hns: Fix unhandled error code in dca uverbs             |
+  | 6e81b2e0b40b | RDMA/hns: Remove redundant address operations in print DCA logs |
 
 - **用户态涉及代码与使能**
 
-  openeuler/rdma 使能信息
+  openeuler/rdma-core 使能信息
 
-  |   COMMITID   |       SUBJECT        | openeuler OLK-5.10 ENABLED(Y/N) |
-  | :----------: | :------------------: | :-----------------------------: |
-  | b88a370b79cd | Support hns roce DCA |                Y                |
+  |   COMMITID   |                      SUBJECT                      |
+  | :----------: | :-----------------------------------------------: |
+  | c7b35a31f788 |  libhns: Add direct verbs support to config DCA   |
+  | ec87209c02c1 |     libhns: Sync DCA status by shared memory      |
+  | 339020fc889d |   libhns: Use shared memory to sync DCA status    |
+  | f96da657494a | libhns: Add support for attaching QP's WQE buffer |
+  | f5306beedef4 | libhns: Add support for shrinking DCA memory pool |
+  | 23718090bda7 |          libhns: Introduce DCA for RC QP          |
+  | 7a4ccc54c3c6 |               Update kernel headers               |
 
-### 特性23: 支持TD无锁
+
+- **用户态重要bugfix**
+
+  openEuler/rdma-core
+
+  | SUBJECT                                   | TAG      |
+  | ----------------------------------------- | -------- |
+  | libhns: Fix unnecessary dca memory detach | v41.0-21 |
+
+### 特性23: 支持用户态无锁
 
 - **特性详解**
 
@@ -1701,22 +2030,19 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
   | ibv_alloc_parent_domain()      | 将TD与PD关联到PAD                 |
   | ibv_create_cq_ex()             | 通过PAD创建新的资源，以QP、CQ为例 |
 
-- **用户态涉及代码与使能**
+- **用户态重要bugfix**
 
-  linux/rdma 合入信息
+  openEuler/rdma-core
 
-  |   COMMITID   |                           SUBJECT                            |     TAG      |
-  | :----------: | :----------------------------------------------------------: | :----------: |
-  | 812372fadc96 | libhns: Add support for the thread domain and the parent domain | rdma-core 28 |
-
-  openeuler/rdma 使能信息
-
-  |   COMMITID   |                           SUBJECT                            | openeuler  ENABLED(Y/N) |
-  | :----------: | :----------------------------------------------------------: | :---------------------: |
-  | 812372fadc96 | libhns: Add support for the thread domain and the parent domain |            Y            |
+  | SUBJECT                                                    | TAG      |
+  | ---------------------------------------------------------- | -------- |
+  | libhns: Fix parent domain unsupported comp mask            | v41.0-23 |
+  | libhns: Removes a repeated initialization of a spinlock    | v41.0-23 |
+  | libhns: Add pthread_spin_destroy()/pthread_mutex_destroy() | v41.0-23 |
 
 
-### 特性24: 支持OFED演进的IO接口
+
+### 特性25: 支持OFED演进的IO接口
 
 - **特性详解**
 
@@ -1753,16 +2079,293 @@ HNS RoCE当前支持四种类型的拥塞控制算法：DCQCN、LDCP、HC3和DCQ
 
   openeuler/rdma 使能信息
 
-  |   COMMITID   |                          SUBJECT                          | openeuler ENABLED(Y/N) |
-  | :----------: | :-------------------------------------------------------: | :--------------------: |
-  | 13c10af17443 |             libhns: Support ibv_create_qp_ex              |           Y            |
-  | 36446a56eea5 | libhns: Extended QP supports the new post send mechanism  |           Y            |
-  | d8596eff4eb4 |       libhns: Add support for creating extended CQ        |           Y            |
-  | 0464e0cb0416 |  libhns: Extended CQ supports the new polling mechanism   |           Y            |
-  | 2d48954e9b26 |        libhns: Optimize the error handling of CQE         |           Y            |
-  | 9dd7b55957cc | libhns: Refactor hns roce v2 poll one() and wc poll cqe() |           Y            |
-  | d8596eff4eb4 |       libhns: Add support for creating extended CQ        |           Y            |
+  |   COMMITID   |                          SUBJECT                          |
+  | :----------: | :-------------------------------------------------------: |
+  | 13c10af17443 |             libhns: Support ibv_create_qp_ex              |
+  | 36446a56eea5 | libhns: Extended QP supports the new post send mechanism  |
+  | d8596eff4eb4 |       libhns: Add support for creating extended CQ        |
+  | 0464e0cb0416 |  libhns: Extended CQ supports the new polling mechanism   |
+  | 2d48954e9b26 |        libhns: Optimize the error handling of CQE         |
+  | 9dd7b55957cc | libhns: Refactor hns roce v2 poll one() and wc poll cqe() |
+  | d8596eff4eb4 |       libhns: Add support for creating extended CQ        |
 
+- **用户态重要bugfix**
 
+  **openEuler/rdma-core**
 
-​	
+  | SUBJECT                                              | TAG      |
+  | ---------------------------------------------------- | -------- |
+  | libhns:  Fix the owner bit error of sq in new io     | v41.0-12 |
+  | libhns: Fix owner bit when SQ wraps around in new IO | v41.0-23 |
+
+  **Linux/rdma-core**
+
+  | COMMITID  | SUBJECT                                         |
+  | --------- | ----------------------------------------------- |
+  | c292b7809 | libhns: Fix the owner bit error of sq in new io |
+
+### 特性26：支持debugfs查询资源信息
+
+#### 支持debugfs查询SRQ Context
+
+- **特性详解**
+
+  驱动加载时会对debugfs进行初始化，在debugfs目录下创建hns_roce目录，然后在该目录内再为每个设备建立目录。本特性需要在设备目录下创建一个srq目录和子目录文件srqc，srqn，用于查询srqc。
+
+- **软件接口**
+
+  使用方法如下:
+
+  ```bash
+  #srq 业务过程中查询srqc
+  cat /sys/kernel/debug/hns_roce/hns_0/srq/srqc
+  [ {
+          "srqn": 0,
+          "ifindex": 0,
+          "ifname": "hns_0",
+          "data": [ 149,0,0,0,0,0,0,1,0,0,0,0,2,103,23,101,0,14,100,31,0,0,0,0,2,0,0,0,0,20,100,31,0,0,0,0,11,178,15,0,0,0,64,5,9,178,15,0,0,0,16,0,0,0,0,9,1,96,32,251,0,0,0,0 ]
+  } ]
+  ```
+
+- **内核态涉及代码与使能**
+
+  linux  主线合入信息
+
+  NA
+
+  openeuler OLK-5.10 使能信息
+
+  |   COMMITID   |                     SUBJECT                      |
+  | :----------: | :----------------------------------------------: |
+  | 0355dea3a834 | RDMA/hns: Support SRQ Context tracing by debugfs |
+
+#### 支持debugfs查询roce软件统计信息
+
+- **特性详解**
+
+  驱动加载时会对debugfs进行初始化，在debugfs目录下创建hns_roce目录，然后在该目录内再为每个设备建立目录。此特性需要在设备目录下创建一个sw_stat目录和文件，用于查询软件统计项。
+
+- **软件接口**
+
+  使用方法如下：
+
+  ```bash
+  #查询软件统计信息
+  cat /sys/kernel/debug/hns_roce/hns_0/sw_stat/sw_stat
+  aeqe                 --- 3341
+  ceqe                 --- 0
+  cmds                 --- 6764
+  cmds_err             --- 0
+  posted_mbx           --- 3344
+  polled_mbx           --- 3
+  mbx_event            --- 3341
+  qp_create_err        --- 0
+  qp_modify_err        --- 0
+  cq_create_err        --- 0
+  srq_create_err       --- 0
+  xrcd_alloc_err       --- 0
+  mr_reg_err           --- 0
+  mr_rereg_err         --- 0
+  ah_create_err        --- 0
+  mmap_err             --- 0
+  uctx_alloc_err       --- 0
+  srq_modify_err       --- 0
+  ```
+
+- **内核态涉及代码与使能**
+
+  linux 主线合入信息
+
+  | COMMITID     | SUBJECT                                                      | TAG            |
+  | ------------ | ------------------------------------------------------------ | -------------- |
+  | ca7ad04cd5d2 | [RDMA/hns: Add debugfs to hns RoCE](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ca7ad04cd5d2) | kernel 6.8-rc1 |
+  | eb7854d63db5 | [RDMA/hns: Support SW stats with debugfs](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=eb7854d63db5) | kernel 6.8-rc1 |
+
+  openeuler OLK-5.10 使能信息
+
+  |   COMMITID   |                           SUBJECT                            |
+  | :----------: | :----------------------------------------------------------: |
+  | 5706343857ed | Revert "RDMA/hns: Fix missing dealloc_dfx_cnt() during device unregister" |
+  | f7a2259b1ddd |             Revert "RDMA/hns: Add dfx cnt stats"             |
+  | 34b5311652bb |  RDMA/hns: Remove return value checks of debugfs functions   |
+  | 5e7ecc38d89b |           RDMA/hns: Support SW stats with debugfs            |
+  | 2223966b006a |    RDMA/hns: Don't set the HW stats ops for VF and HIP08     |
+  | b6643496e2b4 |             RDMA/hns: Refactor hns RoCE debugfs              |
+
+### 特性27:  支持软件上报WC
+
+- **特性详解**
+
+  为了保证硬件故障模式(硬件处于复位过程中，或者复位后没有初始化完成)时不影响业务获取WC状态，增加了软件上报WC的功能，辅助应用快速感知业务状态。 只在硬件复位情况下触发软件上报WC机制，硬件无故障时候仍然采用硬件方式上报WC。
+
+- **软件接口**
+
+  NA
+
+- **内核态涉及代码与使能**
+
+  linux 主线合入信息
+
+  | COMMITID     |                           SUBJECT                            | TAG            |
+  | ------------ | :----------------------------------------------------------: | -------------- |
+  | 626903e9355b | [RDMA/hns: Add support for reporting wc as software mode](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=626903e9355b) | kernel 5.6-rc1 |
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     | SUBJECT                                                 |
+  | ------------ | ------------------------------------------------------- |
+  | 626903e9355b | RDMA/hns: Add support for reporting wc as software mode |
+
+- **用户态涉及代码与使能**
+
+  openEuler/rdma-core
+
+  | SUBJECT                                           | TAG      |
+  | ------------------------------------------------- | -------- |
+  | libhns: assign doorbell to zero when allocate it  | v41.0-15 |
+  | libhns: separate the initialization steps of lock | v41.0-15 |
+  | libhns: Support reporting wc as software mode     | v41.0-15 |
+
+### **特性28:  支持direct wqe**
+
+- **特性详解**
+
+  Direct WQE是软件驱动直接将完整wqe一次性发送到PCI BAR空间，硬件直接从bar空间读取数据而无需访问内存，从而缩短执行延迟。
+
+- **软件接口**
+
+  NA
+
+- **内核态涉及代码与使能**
+
+  linux 主线合入信息
+
+  | COMMITID     |                           SUBJECT                            | TAG             |
+  | ------------ | :----------------------------------------------------------: | --------------- |
+  | 01584a5edcc4 | [RDMA/hns: Add support of direct wqe](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=01584a5edcc4) | kernel 5.12-rc1 |
+  | 591f762b2750 | [RDMA/hns: Remove the condition of light load for posting DWQE](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=591f762b2750) | kernel 5.14-rc1 |
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     | SUBJECT                                                      |
+  | ------------ | ------------------------------------------------------------ |
+  | 01584a5edcc4 | RDMA/hns: Add support of direct wqe                          |
+  | 591f762b2750 | RDMA/hns: Remove the condition of light load for posting DWQE |
+  | 2c61dcac92e8 | RDMA/hns: Add SVE DIRECT WQE flag to support libhns          |
+
+- **用户态涉及代码与使能**
+
+  **linux/rdma-core**
+
+  | COMMITID  | SUBJECT                    |
+  | --------- | -------------------------- |
+  | 159933c37 | Add support for direct wqe |
+
+  **openEuler/rdma-core**
+
+  | SUBJECT                                | TAG      |
+  | -------------------------------------- | -------- |
+  | Update kernel headers                  | v41.0-10 |
+  | libhns: Add support for SVE Direct WQE | v41.0-10 |
+
+- **用户态重要bugfix**
+
+  **openEuler/rdma-core**
+
+  | SUBJECT                                                   | TAG      |
+  | --------------------------------------------------------- | -------- |
+  | libhns: Fix missing DB when compiler does not support SVE | v41.0-24 |
+
+  **linux/rdma-core**
+
+  | COMMITID  | SUBJECT                                                    |
+  | --------- | ---------------------------------------------------------- |
+  | 9e8e0be45 | libhns: Fix incorrect post-send with direct wqe of wr-list |
+
+### 特性29:  支持STARS模式
+
+- **特性详解**
+
+  STARS（System Task and Resource Scheduler）是昇腾芯片统一的任务和资源调度器。鲲鹏920系列处理器将集成昇腾芯片的STARS模块，并在该模块中增加对RoCEE的支持（STARS over RDMA）。 
+
+- **软件接口**
+
+  内核态
+
+  | 软件接口                         | 描述                           |
+  | -------------------------------- | ------------------------------ |
+  | rdma_register_poe_channel()      | 注册POE通道                    |
+  | rdma_unregister_poe_channel()    | 解注册POE通道                  |
+  | rdma_support_stars()             | 判断设备是否支持STARS          |
+  | rdma_query_qp_db()               | 获取设备doorbell地址           |
+  | rdma_query_hw_id()               | 获取设备相关硬件ID             |
+  | rdma_register_notify_addr（s是啥 | 注册用于notify operation的MR   |
+  | rdma_unregister_notify_addr()    | 解注册用于notify operation的MR |
+
+  用户态
+
+  | 软件接口                | 描述                |
+  | ----------------------- | ------------------- |
+  | hnsdv_update_sq_ci()    | 更新sq的ci指针      |
+  | hnsdv_wr_write_notify() | 填写wqe中notify信息 |
+
+- **内核态涉及代码与使能**
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     | SUBJECT                                                      |
+  | ------------ | ------------------------------------------------------------ |
+  | 21cacb516f20 | RDMA/hns: Support write with notify                          |
+  | aae9bba55fae | RDMA/hns: Support kernel ULP querying HW ID                  |
+  | 85b26a97adfe | RDMA/hns: Support STARS mode QP                              |
+  | 96df01574e0c | RDMA/hns: Support configuring POE channels and creating POE CQs |
+  | 1470b68f21c3 | RDMA/hns: Fix print after query hw id failed.                |
+  | 867e1e95fe12 | RDMA/hns: Support query HW ID from user space.               |
+  | 04180b7a60b7 | RDMA/hns: Fix memory leak in POE debugfs                     |
+
+- **用户态涉及代码与使能**
+
+  openEuler/rdma-core
+
+  | SUBJECT                                                | TAG      |
+  | ------------------------------------------------------ | -------- |
+  | Update kernel headers for libhns query_device()        | v41.0-19 |
+  | libhns: Support query HW ID by hnsdv_query_device()    | v41.0-19 |
+  | libhns: Support query HW ID by hnsdv_query_device()    | v41.0-19 |
+  | libhns: Add support for POE CQs                        | v41.0-19 |
+  | Update kernel headers for supporting STARS QP in HNS   | v41.0-19 |
+  | libhns: Support STARS mode QP                          | v41.0-19 |
+  | Update kernel headers for supporting write with notify | v41.0-19 |
+  | libhns: Support write with notify                      | v41.0-19 |
+
+### 特性30:  RoCE驱动支持UB Link功能
+
+- **特性详解**
+
+  RDMA over UB link, 指的是使用RDMA软件驱动在UB硬件中使用。该特性又叫做单port多协议，指port 指的是物理port（UBL）。
+
+  RoUB和RoH模式类似
+
+  1. 在UBL模式下，可以使用RDMA的原语。
+  2. 可以兼容老的OFED的API。
+
+- **软件接口**
+
+  NA
+
+- **内核态涉及代码与使能**
+
+  openeuler OLK-5.10 使能信息
+
+  | COMMITID     | SUBJECT                                      |
+  | ------------ | -------------------------------------------- |
+  | 67fc10550307 | RDMA/hns: Add support for RDMA VF over UBL   |
+  | c6a060633ded | RDMA/core: Add support for the new ARPHRD_UB |
+
+- **用户态重要bugfix**
+
+  openEuler/rdma-core
+
+  | SUBJECT                                         | TAG      |
+  | ----------------------------------------------- | -------- |
+  | libhns: Skip resolving MAC for RDMA over UBLink | v41.0-18 |
