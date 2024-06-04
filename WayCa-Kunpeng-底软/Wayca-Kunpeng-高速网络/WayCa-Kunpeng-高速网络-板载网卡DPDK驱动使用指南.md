@@ -157,6 +157,36 @@ testpmd> show fwd stats all
   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ```
+## 5. 性能调优指导
+### 5.1 禁用CPU动态调频
+CPU动态调频是为了降低服务器功耗。在比拼DPDK性能时推荐将CPU频率设为最高。禁用动态调频的方法有两种。
+- 系统配置文件的CPU Frequency scaling中,将如下配置配为y,则系统默认选用performance模式。
+CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y
+- BIOS可禁用动态调频。不同型号的Kunpeng服务器上禁用方法可能有所不同，如kunpeng920配置路径如下：
+Advanced->Performance config->Power Policy   选择Performance
+
+### 5.2 大页配置
+DPDK使用大页来提升TLB命中率，要使得DPDK网卡性能达到最佳，4K系统推荐使用1G大页； 64K系统推荐使用512M大页。
+可在系统BOOT内核启动参数中增加静态大页的配置参数，如：default_hugepagesz=1G hugepagesz=1G hugepages=80或default_hugepagesz=512M hugepagesz=512M hugepages=80。
+### 5.3 禁用透明大页
+关掉透明大页方法如下：
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+### 5.4 核隔离配置
+使用核隔离来避免CPU被其他进程抢占，保证DPDK进程100%占用CPU，在Linux OS启动前，在Boot启动CMDLINE中增加核隔离启动参数，如：isolcpus=1-18 nohz_full=1-18 rcu_nocbs=1-18"
+### 5.5 NUMA亲和
+使用和网卡相同numa的CPU，避免跨NUMA增加内存访问延迟。
+### 5.7 队列深度和burst大小
+队列深度增大，可以有一定的防抖作用，队列深度设置过大也会影响性能，可以根据实际应用场景进行调整。推荐使用功能队列深度为2048和64 burst大小。
+### 5.8 使用多队列
+利用RSS功能，实现数据流的负载均衡。配置多队列业务模型推荐如下：
+- 一个核负责一个队列
+- 使用五元祖跳变确保散列均衡
+### 5.9 使用Neon向量收发包
+驱动会根据Rx/Tx offload配置自动适配收发包算法，如果只涉及单mbuf收发场景，建议合理配置Rx/Tx offload确保驱动匹配成向量收发包。具体请参考《WayCa-Kunpeng-高速网络-板载网卡DPDK驱动特性介绍》。
+### 5.10 尽量避免使用同一个Cluster上的核
+每个Cluster访问L3的带宽有上限，推荐每个CPU Cluster使用一个核。
+### 5.11 虚拟机性能优化配置
+确保虚拟机使用Host侧大页内存
 
 ## 5. 常用dump工具
 * proc_info工具  
