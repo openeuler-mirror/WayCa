@@ -188,7 +188,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ### 5.11 虚拟机性能优化配置
 确保虚拟机使用Host侧大页内存
 
-## 5. 常用dump工具
+## 6. 常用dump工具
 * proc_info工具  
 一般以从进程方式运行，调用框架接口进行信息查询。该app必须与主进程的程序一起编译方可使用。  
 具体使用方法见官网http://doc.dpdk.org/guides/tools/proc_info.html。
@@ -331,7 +331,7 @@ Connected to application: "dpdk-testpmd"
 --> 
 ```
 
-## 6. 常见问题
+## 7. 常见问题
 
 [1] meson编译报错  
 现象：编译DPDK报caspl指令错误
